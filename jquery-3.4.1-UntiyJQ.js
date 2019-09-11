@@ -1,13 +1,13 @@
 /*!
- * UntiyJQ JavaScript Library v3.4.1
- * https://UntiyJQ.com/
+ * $$ JavaScript Library v3.4.1
+ * https://$$.com/
  *
  * Includes Sizzle.js
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
- * https://UntiyJQ.org/license
+ * https://$$.org/license
  *
  * Date: 2019-05-01T21:04Z
  */
@@ -18,17 +18,17 @@
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 
 		// For CommonJS and CommonJS-like environments where a proper `window`
-		// is present, execute the factory and get UntiyJQ.
+		// is present, execute the factory and get $$.
 		// For environments that do not have a `window` with a `document`
 		// (such as Node.js), expose a factory as module.exports.
 		// This accentuates the need for the creation of a real `window`.
-		// e.g. var UntiyJQ = require("UntiyJQ")(window);
+		// e.g. var $$ = require("$$")(window);
 		// See ticket #14549 for more info.
 		module.exports = global.document ?
 			factory( global, true ) :
 			function( w ) {
 				if ( !w.document ) {
-					throw new Error( "UntiyJQ requires a window with a document" );
+					throw new Error( "$$ requires a window with a document" );
 				}
 				return factory( w );
 			};
@@ -41,7 +41,7 @@
 
 // Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
-// arguments.callee.caller (trac-13335). But as of UntiyJQ 3.0 (2016), strict mode should be common
+// arguments.callee.caller (trac-13335). But as of $$ 3.0 (2016), strict mode should be common
 // enough that all such attempts are guarded in a try block.
 "use strict";
 
@@ -113,7 +113,7 @@ var isWindow = function isWindow( obj ) {
 				// See https://github.com/whatwg/html/issues/2369
 				// See https://html.spec.whatwg.org/#nonce-attributes
 				// The `node.getAttribute` check was added for the sake of
-				// `UntiyJQ.globalEval` so that it can fake a nonce-containing node
+				// `$$.globalEval` so that it can fake a nonce-containing node
 				// via an object.
 				val = node[ i ] || node.getAttribute && node.getAttribute( i );
 				if ( val ) {
@@ -144,26 +144,26 @@ function toType( obj ) {
 var
 	version = "3.4.1",
 
-	// Define a local copy of UntiyJQ
-	UntiyJQ = function( selector, context ) {
+	// Define a local copy of $$
+	$$ = function( selector, context ) {
 
-		// The UntiyJQ object is actually just the init constructor 'enhanced'
-		// Need init if UntiyJQ is called (just allow error to be thrown if not included)
-		return new UntiyJQ.fn.init( selector, context );
+		// The $$ object is actually just the init constructor 'enhanced'
+		// Need init if $$ is called (just allow error to be thrown if not included)
+		return new $$.fn.init( selector, context );
 	},
 
 	// Support: Android <=4.0 only
 	// Make sure we trim BOM and NBSP
 	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 
-UntiyJQ.fn = UntiyJQ.prototype = {
+$$.fn = $$.prototype = {
 
-	// The current version of UntiyJQ being used
-	UntiyJQ: version,
+	// The current version of $$ being used
+	$$: version,
 
-	constructor: UntiyJQ,
+	constructor: $$,
 
-	// The default length of a UntiyJQ object is 0
+	// The default length of a $$ object is 0
 	length: 0,
 
 	toArray: function() {
@@ -187,8 +187,8 @@ UntiyJQ.fn = UntiyJQ.prototype = {
 	// (returning the new matched element set)
 	pushStack: function( elems ) {
 
-		// Build a new UntiyJQ matched element set
-		var ret = UntiyJQ.merge( this.constructor(), elems );
+		// Build a new $$ matched element set
+		var ret = $$.merge( this.constructor(), elems );
 
 		// Add the old object onto the stack (as a reference)
 		ret.prevObject = this;
@@ -199,11 +199,11 @@ UntiyJQ.fn = UntiyJQ.prototype = {
 
 	// Execute a callback for every element in the matched set.
 	each: function( callback ) {
-		return UntiyJQ.each( this, callback );
+		return $$.each( this, callback );
 	},
 
 	map: function( callback ) {
-		return this.pushStack( UntiyJQ.map( this, function( elem, i ) {
+		return this.pushStack( $$.map( this, function( elem, i ) {
 			return callback.call( elem, i, elem );
 		} ) );
 	},
@@ -231,13 +231,13 @@ UntiyJQ.fn = UntiyJQ.prototype = {
 	},
 
 	// For internal use only.
-	// Behaves like an Array's method, not like a UntiyJQ method.
+	// Behaves like an Array's method, not like a $$ method.
 	push: push,
 	sort: arr.sort,
 	splice: arr.splice
 };
 
-UntiyJQ.extend = UntiyJQ.fn.extend = function() {
+$$.extend = $$.fn.extend = function() {
 	var options, name, src, copy, copyIsArray, clone,
 		target = arguments[ 0 ] || {},
 		i = 1,
@@ -258,7 +258,7 @@ UntiyJQ.extend = UntiyJQ.fn.extend = function() {
 		target = {};
 	}
 
-	// Extend UntiyJQ itself if only one argument is passed
+	// Extend $$ itself if only one argument is passed
 	if ( i === length ) {
 		target = this;
 		i--;
@@ -280,14 +280,14 @@ UntiyJQ.extend = UntiyJQ.fn.extend = function() {
 				}
 
 				// Recurse if we're merging plain objects or arrays
-				if ( deep && copy && ( UntiyJQ.isPlainObject( copy ) ||
+				if ( deep && copy && ( $$.isPlainObject( copy ) ||
 					( copyIsArray = Array.isArray( copy ) ) ) ) {
 					src = target[ name ];
 
 					// Ensure proper type for the source value
 					if ( copyIsArray && !Array.isArray( src ) ) {
 						clone = [];
-					} else if ( !copyIsArray && !UntiyJQ.isPlainObject( src ) ) {
+					} else if ( !copyIsArray && !$$.isPlainObject( src ) ) {
 						clone = {};
 					} else {
 						clone = src;
@@ -295,7 +295,7 @@ UntiyJQ.extend = UntiyJQ.fn.extend = function() {
 					copyIsArray = false;
 
 					// Never move original objects, clone them
-					target[ name ] = UntiyJQ.extend( deep, clone, copy );
+					target[ name ] = $$.extend( deep, clone, copy );
 
 				// Don't bring in undefined values
 				} else if ( copy !== undefined ) {
@@ -309,12 +309,12 @@ UntiyJQ.extend = UntiyJQ.fn.extend = function() {
 	return target;
 };
 
-UntiyJQ.extend( {
+$$.extend( {
 
-	// Unique for each copy of UntiyJQ on the page
-	expando: "UntiyJQ" + ( version + Math.random() ).replace( /\D/g, "" ),
+	// Unique for each copy of $$ on the page
+	expando: "$$" + ( version + Math.random() ).replace( /\D/g, "" ),
 
-	// Assume UntiyJQ is ready without the ready module
+	// Assume $$ is ready without the ready module
 	isReady: true,
 
 	error: function( msg ) {
@@ -327,7 +327,7 @@ UntiyJQ.extend( {
 		var proto, Ctor;
 
 		// Detect obvious negatives
-		// Use toString instead of UntiyJQ.type to catch host objects
+		// Use toString instead of $$.type to catch host objects
 		if ( !obj || toString.call( obj ) !== "[object Object]" ) {
 			return false;
 		}
@@ -392,7 +392,7 @@ UntiyJQ.extend( {
 
 		if ( arr != null ) {
 			if ( isArrayLike( Object( arr ) ) ) {
-				UntiyJQ.merge( ret,
+				$$.merge( ret,
 					typeof arr === "string" ?
 					[ arr ] : arr
 				);
@@ -478,17 +478,17 @@ UntiyJQ.extend( {
 	// A global GUID counter for objects
 	guid: 1,
 
-	// UntiyJQ.support is not used in Core but other projects attach their
+	// $$.support is not used in Core but other projects attach their
 	// properties to it so it needs to exist.
 	support: support
 } );
 
 if ( typeof Symbol === "function" ) {
-	UntiyJQ.fn[ Symbol.iterator ] = arr[ Symbol.iterator ];
+	$$.fn[ Symbol.iterator ] = arr[ Symbol.iterator ];
 }
 
 // Populate the class2type map
-UntiyJQ.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
+$$.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
 function( i, name ) {
 	class2type[ "[object " + name + "]" ] = name.toLowerCase();
 } );
@@ -1077,7 +1077,7 @@ isXML = Sizzle.isXML = function( elem ) {
 
 	// Support: IE <=8
 	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
-	// https://bugs.UntiyJQ.com/ticket/4833
+	// https://bugs.$$.com/ticket/4833
 	return !rhtml.test( namespace || docElem && docElem.nodeName || "HTML" );
 };
 
@@ -1101,7 +1101,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	documentIsHTML = !isXML( document );
 
 	// Support: IE 9-11, Edge
-	// Accessing iframe documents after unload throws "permission denied" errors (UntiyJQ #13936)
+	// Accessing iframe documents after unload throws "permission denied" errors ($$ #13936)
 	if ( preferredDoc !== document &&
 		(subWindow = document.defaultView) && subWindow.top !== subWindow ) {
 
@@ -1253,7 +1253,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// We allow this because of a bug in IE8/9 that throws an error
 	// whenever `document.activeElement` is accessed on an iframe
 	// So, we allow :focus to pass through QSA all the time to avoid the IE error
-	// See https://bugs.UntiyJQ.com/ticket/13378
+	// See https://bugs.$$.com/ticket/13378
 	rbuggyQSA = [];
 
 	if ( (support.qsa = rnative.test( document.querySelectorAll )) ) {
@@ -1264,7 +1264,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// This is to test IE's treatment of not explicitly
 			// setting a boolean content attribute,
 			// since its presence should be enough
-			// https://bugs.UntiyJQ.com/ticket/12359
+			// https://bugs.$$.com/ticket/12359
 			docElem.appendChild( el ).innerHTML = "<a id='" + expando + "'></a>" +
 				"<select id='" + expando + "-\r\\' msallowcapture=''>" +
 				"<option selected=''></option></select>";
@@ -1538,7 +1538,7 @@ Sizzle.attr = function( elem, name ) {
 	}
 
 	var fn = Expr.attrHandle[ name.toLowerCase() ],
-		// Don't get fooled by Object.prototype properties (UntiyJQ #13807)
+		// Don't get fooled by Object.prototype properties ($$ #13807)
 		val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
 			fn( elem, name, !documentIsHTML ) :
 			undefined;
@@ -1587,7 +1587,7 @@ Sizzle.uniqueSort = function( results ) {
 	}
 
 	// Clear input after sorting to release objects
-	// See https://github.com/UntiyJQ/sizzle/pull/225
+	// See https://github.com/$$/sizzle/pull/225
 	sortInput = null;
 
 	return results;
@@ -1611,7 +1611,7 @@ getText = Sizzle.getText = function( elem ) {
 		}
 	} else if ( nodeType === 1 || nodeType === 9 || nodeType === 11 ) {
 		// Use textContent for elements
-		// innerText usage removed for consistency of new lines (UntiyJQ #11153)
+		// innerText usage removed for consistency of new lines ($$ #11153)
 		if ( typeof elem.textContent === "string" ) {
 			return elem.textContent;
 		} else {
@@ -1820,7 +1820,7 @@ Expr = Sizzle.selectors = {
 							outerCache = node[ expando ] || (node[ expando ] = {});
 
 							// Support: IE <9 only
-							// Defend against cloned attroperties (UntiyJQ gh-1709)
+							// Defend against cloned attroperties ($$ gh-1709)
 							uniqueCache = outerCache[ node.uniqueID ] ||
 								(outerCache[ node.uniqueID ] = {});
 
@@ -1849,7 +1849,7 @@ Expr = Sizzle.selectors = {
 								outerCache = node[ expando ] || (node[ expando ] = {});
 
 								// Support: IE <9 only
-								// Defend against cloned attroperties (UntiyJQ gh-1709)
+								// Defend against cloned attroperties ($$ gh-1709)
 								uniqueCache = outerCache[ node.uniqueID ] ||
 									(outerCache[ node.uniqueID ] = {});
 
@@ -1875,7 +1875,7 @@ Expr = Sizzle.selectors = {
 											outerCache = node[ expando ] || (node[ expando ] = {});
 
 											// Support: IE <9 only
-											// Defend against cloned attroperties (UntiyJQ gh-1709)
+											// Defend against cloned attroperties ($$ gh-1709)
 											uniqueCache = outerCache[ node.uniqueID ] ||
 												(outerCache[ node.uniqueID ] = {});
 
@@ -2266,7 +2266,7 @@ function addCombinator( matcher, combinator, base ) {
 						outerCache = elem[ expando ] || (elem[ expando ] = {});
 
 						// Support: IE <9 only
-						// Defend against cloned attroperties (UntiyJQ gh-1709)
+						// Defend against cloned attroperties ($$ gh-1709)
 						uniqueCache = outerCache[ elem.uniqueID ] || (outerCache[ elem.uniqueID ] = {});
 
 						if ( skip && skip === elem.nodeName.toLowerCase() ) {
@@ -2776,16 +2776,16 @@ return Sizzle;
 
 
 
-UntiyJQ.find = Sizzle;
-UntiyJQ.expr = Sizzle.selectors;
+$$.find = Sizzle;
+$$.expr = Sizzle.selectors;
 
 // Deprecated
-UntiyJQ.expr[ ":" ] = UntiyJQ.expr.pseudos;
-UntiyJQ.uniqueSort = UntiyJQ.unique = Sizzle.uniqueSort;
-UntiyJQ.text = Sizzle.getText;
-UntiyJQ.isXMLDoc = Sizzle.isXML;
-UntiyJQ.contains = Sizzle.contains;
-UntiyJQ.escapeSelector = Sizzle.escape;
+$$.expr[ ":" ] = $$.expr.pseudos;
+$$.uniqueSort = $$.unique = Sizzle.uniqueSort;
+$$.text = Sizzle.getText;
+$$.isXMLDoc = Sizzle.isXML;
+$$.contains = Sizzle.contains;
+$$.escapeSelector = Sizzle.escape;
 
 
 
@@ -2796,7 +2796,7 @@ var dir = function( elem, dir, until ) {
 
 	while ( ( elem = elem[ dir ] ) && elem.nodeType !== 9 ) {
 		if ( elem.nodeType === 1 ) {
-			if ( truncate && UntiyJQ( elem ).is( until ) ) {
+			if ( truncate && $$( elem ).is( until ) ) {
 				break;
 			}
 			matched.push( elem );
@@ -2819,7 +2819,7 @@ var siblings = function( n, elem ) {
 };
 
 
-var rneedsContext = UntiyJQ.expr.match.needsContext;
+var rneedsContext = $$.expr.match.needsContext;
 
 
 
@@ -2835,30 +2835,30 @@ var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|
 // Implement the identical functionality for filter and not
 function winnow( elements, qualifier, not ) {
 	if ( isFunction( qualifier ) ) {
-		return UntiyJQ.grep( elements, function( elem, i ) {
+		return $$.grep( elements, function( elem, i ) {
 			return !!qualifier.call( elem, i, elem ) !== not;
 		} );
 	}
 
 	// Single element
 	if ( qualifier.nodeType ) {
-		return UntiyJQ.grep( elements, function( elem ) {
+		return $$.grep( elements, function( elem ) {
 			return ( elem === qualifier ) !== not;
 		} );
 	}
 
-	// Arraylike of elements (UntiyJQ, arguments, Array)
+	// Arraylike of elements ($$, arguments, Array)
 	if ( typeof qualifier !== "string" ) {
-		return UntiyJQ.grep( elements, function( elem ) {
+		return $$.grep( elements, function( elem ) {
 			return ( indexOf.call( qualifier, elem ) > -1 ) !== not;
 		} );
 	}
 
 	// Filtered directly for both simple and complex selectors
-	return UntiyJQ.filter( qualifier, elements, not );
+	return $$.filter( qualifier, elements, not );
 }
 
-UntiyJQ.filter = function( expr, elems, not ) {
+$$.filter = function( expr, elems, not ) {
 	var elem = elems[ 0 ];
 
 	if ( not ) {
@@ -2866,24 +2866,24 @@ UntiyJQ.filter = function( expr, elems, not ) {
 	}
 
 	if ( elems.length === 1 && elem.nodeType === 1 ) {
-		return UntiyJQ.find.matchesSelector( elem, expr ) ? [ elem ] : [];
+		return $$.find.matchesSelector( elem, expr ) ? [ elem ] : [];
 	}
 
-	return UntiyJQ.find.matches( expr, UntiyJQ.grep( elems, function( elem ) {
+	return $$.find.matches( expr, $$.grep( elems, function( elem ) {
 		return elem.nodeType === 1;
 	} ) );
 };
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	find: function( selector ) {
 		var i, ret,
 			len = this.length,
 			self = this;
 
 		if ( typeof selector !== "string" ) {
-			return this.pushStack( UntiyJQ( selector ).filter( function() {
+			return this.pushStack( $$( selector ).filter( function() {
 				for ( i = 0; i < len; i++ ) {
-					if ( UntiyJQ.contains( self[ i ], this ) ) {
+					if ( $$.contains( self[ i ], this ) ) {
 						return true;
 					}
 				}
@@ -2893,10 +2893,10 @@ UntiyJQ.fn.extend( {
 		ret = this.pushStack( [] );
 
 		for ( i = 0; i < len; i++ ) {
-			UntiyJQ.find( selector, self[ i ], ret );
+			$$.find( selector, self[ i ], ret );
 		}
 
-		return len > 1 ? UntiyJQ.uniqueSort( ret ) : ret;
+		return len > 1 ? $$.uniqueSort( ret ) : ret;
 	},
 	filter: function( selector ) {
 		return this.pushStack( winnow( this, selector || [], false ) );
@@ -2911,7 +2911,7 @@ UntiyJQ.fn.extend( {
 			// If this is a positional/relative selector, check membership in the returned set
 			// so $("p:first").is("p:last") won't return true for a doc with two "p".
 			typeof selector === "string" && rneedsContext.test( selector ) ?
-				UntiyJQ( selector ) :
+				$$( selector ) :
 				selector || [],
 			false
 		).length;
@@ -2919,11 +2919,11 @@ UntiyJQ.fn.extend( {
 } );
 
 
-// Initialize a UntiyJQ object
+// Initialize a $$ object
 
 
-// A central reference to the root UntiyJQ(document)
-var rootUntiyJQ,
+// A central reference to the root $$(document)
+var root$$,
 
 	// A simple way to check for HTML strings
 	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
@@ -2931,7 +2931,7 @@ var rootUntiyJQ,
 	// Shortcut simple #id case for speed
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
 
-	init = UntiyJQ.fn.init = function( selector, context, root ) {
+	init = $$.fn.init = function( selector, context, root ) {
 		var match, elem;
 
 		// HANDLE: $(""), $(null), $(undefined), $(false)
@@ -2939,9 +2939,9 @@ var rootUntiyJQ,
 			return this;
 		}
 
-		// Method init() accepts an alternate rootUntiyJQ
-		// so migrate can support UntiyJQ.sub (gh-2101)
-		root = root || rootUntiyJQ;
+		// Method init() accepts an alternate root$$
+		// so migrate can support $$.sub (gh-2101)
+		root = root || root$$;
 
 		// Handle HTML strings
 		if ( typeof selector === "string" ) {
@@ -2961,18 +2961,18 @@ var rootUntiyJQ,
 
 				// HANDLE: $(html) -> $(array)
 				if ( match[ 1 ] ) {
-					context = context instanceof UntiyJQ ? context[ 0 ] : context;
+					context = context instanceof $$ ? context[ 0 ] : context;
 
 					// Option to run scripts is true for back-compat
 					// Intentionally let the error be thrown if parseHTML is not present
-					UntiyJQ.merge( this, UntiyJQ.parseHTML(
+					$$.merge( this, $$.parseHTML(
 						match[ 1 ],
 						context && context.nodeType ? context.ownerDocument || context : document,
 						true
 					) );
 
 					// HANDLE: $(html, props)
-					if ( rsingleTag.test( match[ 1 ] ) && UntiyJQ.isPlainObject( context ) ) {
+					if ( rsingleTag.test( match[ 1 ] ) && $$.isPlainObject( context ) ) {
 						for ( match in context ) {
 
 							// Properties of context are called as methods if possible
@@ -2994,7 +2994,7 @@ var rootUntiyJQ,
 
 					if ( elem ) {
 
-						// Inject the element directly into the UntiyJQ object
+						// Inject the element directly into the $$ object
 						this[ 0 ] = elem;
 						this.length = 1;
 					}
@@ -3002,7 +3002,7 @@ var rootUntiyJQ,
 				}
 
 			// HANDLE: $(expr, $(...))
-			} else if ( !context || context.UntiyJQ ) {
+			} else if ( !context || context.$$ ) {
 				return ( context || root ).find( selector );
 
 			// HANDLE: $(expr, context)
@@ -3024,17 +3024,17 @@ var rootUntiyJQ,
 				root.ready( selector ) :
 
 				// Execute immediately if ready is not present
-				selector( UntiyJQ );
+				selector( $$ );
 		}
 
-		return UntiyJQ.makeArray( selector, this );
+		return $$.makeArray( selector, this );
 	};
 
-// Give the init function the UntiyJQ prototype for later instantiation
-init.prototype = UntiyJQ.fn;
+// Give the init function the $$ prototype for later instantiation
+init.prototype = $$.fn;
 
 // Initialize central reference
-rootUntiyJQ = UntiyJQ( document );
+root$$ = $$( document );
 
 
 var rparentsprev = /^(?:parents|prev(?:Until|All))/,
@@ -3047,15 +3047,15 @@ var rparentsprev = /^(?:parents|prev(?:Until|All))/,
 		prev: true
 	};
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	has: function( target ) {
-		var targets = UntiyJQ( target, this ),
+		var targets = $$( target, this ),
 			l = targets.length;
 
 		return this.filter( function() {
 			var i = 0;
 			for ( ; i < l; i++ ) {
-				if ( UntiyJQ.contains( this, targets[ i ] ) ) {
+				if ( $$.contains( this, targets[ i ] ) ) {
 					return true;
 				}
 			}
@@ -3067,7 +3067,7 @@ UntiyJQ.fn.extend( {
 			i = 0,
 			l = this.length,
 			matched = [],
-			targets = typeof selectors !== "string" && UntiyJQ( selectors );
+			targets = typeof selectors !== "string" && $$( selectors );
 
 		// Positional selectors never match, since there's no _selection_ context
 		if ( !rneedsContext.test( selectors ) ) {
@@ -3080,7 +3080,7 @@ UntiyJQ.fn.extend( {
 
 						// Don't pass non-elements to Sizzle
 						cur.nodeType === 1 &&
-							UntiyJQ.find.matchesSelector( cur, selectors ) ) ) {
+							$$.find.matchesSelector( cur, selectors ) ) ) {
 
 						matched.push( cur );
 						break;
@@ -3089,7 +3089,7 @@ UntiyJQ.fn.extend( {
 			}
 		}
 
-		return this.pushStack( matched.length > 1 ? UntiyJQ.uniqueSort( matched ) : matched );
+		return this.pushStack( matched.length > 1 ? $$.uniqueSort( matched ) : matched );
 	},
 
 	// Determine the position of an element within the set
@@ -3102,21 +3102,21 @@ UntiyJQ.fn.extend( {
 
 		// Index in selector
 		if ( typeof elem === "string" ) {
-			return indexOf.call( UntiyJQ( elem ), this[ 0 ] );
+			return indexOf.call( $$( elem ), this[ 0 ] );
 		}
 
 		// Locate the position of the desired element
 		return indexOf.call( this,
 
-			// If it receives a UntiyJQ object, the first element is used
-			elem.UntiyJQ ? elem[ 0 ] : elem
+			// If it receives a $$ object, the first element is used
+			elem.$$ ? elem[ 0 ] : elem
 		);
 	},
 
 	add: function( selector, context ) {
 		return this.pushStack(
-			UntiyJQ.uniqueSort(
-				UntiyJQ.merge( this.get(), UntiyJQ( selector, context ) )
+			$$.uniqueSort(
+				$$.merge( this.get(), $$( selector, context ) )
 			)
 		);
 	},
@@ -3133,7 +3133,7 @@ function sibling( cur, dir ) {
 	return cur;
 }
 
-UntiyJQ.each( {
+$$.each( {
 	parent: function( elem ) {
 		var parent = elem.parentNode;
 		return parent && parent.nodeType !== 11 ? parent : null;
@@ -3180,25 +3180,25 @@ UntiyJQ.each( {
 			elem = elem.content || elem;
 		}
 
-		return UntiyJQ.merge( [], elem.childNodes );
+		return $$.merge( [], elem.childNodes );
 	}
 }, function( name, fn ) {
-	UntiyJQ.fn[ name ] = function( until, selector ) {
-		var matched = UntiyJQ.map( this, fn, until );
+	$$.fn[ name ] = function( until, selector ) {
+		var matched = $$.map( this, fn, until );
 
 		if ( name.slice( -5 ) !== "Until" ) {
 			selector = until;
 		}
 
 		if ( selector && typeof selector === "string" ) {
-			matched = UntiyJQ.filter( selector, matched );
+			matched = $$.filter( selector, matched );
 		}
 
 		if ( this.length > 1 ) {
 
 			// Remove duplicates
 			if ( !guaranteedUnique[ name ] ) {
-				UntiyJQ.uniqueSort( matched );
+				$$.uniqueSort( matched );
 			}
 
 			// Reverse order for parents* and prev-derivatives
@@ -3217,7 +3217,7 @@ var rnothtmlwhite = ( /[^\x20\t\r\n\f]+/g );
 // Convert String-formatted options into Object-formatted ones
 function createOptions( options ) {
 	var object = {};
-	UntiyJQ.each( options.match( rnothtmlwhite ) || [], function( _, flag ) {
+	$$.each( options.match( rnothtmlwhite ) || [], function( _, flag ) {
 		object[ flag ] = true;
 	} );
 	return object;
@@ -3245,13 +3245,13 @@ function createOptions( options ) {
  *	stopOnFalse:	interrupt callings when a callback returns false
  *
  */
-UntiyJQ.Callbacks = function( options ) {
+$$.Callbacks = function( options ) {
 
 	// Convert options from String-formatted to Object-formatted if needed
 	// (we check in cache first)
 	options = typeof options === "string" ?
 		createOptions( options ) :
-		UntiyJQ.extend( {}, options );
+		$$.extend( {}, options );
 
 	var // Flag to know if list is currently firing
 		firing,
@@ -3333,7 +3333,7 @@ UntiyJQ.Callbacks = function( options ) {
 					}
 
 					( function add( args ) {
-						UntiyJQ.each( args, function( _, arg ) {
+						$$.each( args, function( _, arg ) {
 							if ( isFunction( arg ) ) {
 								if ( !options.unique || !self.has( arg ) ) {
 									list.push( arg );
@@ -3355,9 +3355,9 @@ UntiyJQ.Callbacks = function( options ) {
 
 			// Remove a callback from the list
 			remove: function() {
-				UntiyJQ.each( arguments, function( _, arg ) {
+				$$.each( arguments, function( _, arg ) {
 					var index;
-					while ( ( index = UntiyJQ.inArray( arg, list, index ) ) > -1 ) {
+					while ( ( index = $$.inArray( arg, list, index ) ) > -1 ) {
 						list.splice( index, 1 );
 
 						// Handle firing indexes
@@ -3373,7 +3373,7 @@ UntiyJQ.Callbacks = function( options ) {
 			// If no argument is given, return whether or not list has callbacks attached.
 			has: function( fn ) {
 				return fn ?
-					UntiyJQ.inArray( fn, list ) > -1 :
+					$$.inArray( fn, list ) > -1 :
 					list.length > 0;
 			},
 
@@ -3470,7 +3470,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 		}
 
 	// For Promises/A+, convert exceptions into rejections
-	// Since UntiyJQ.when doesn't unwrap thenables, we can skip the extra checks appearing in
+	// Since $$.when doesn't unwrap thenables, we can skip the extra checks appearing in
 	// Deferred#then to conditionally suppress rejection.
 	} catch ( value ) {
 
@@ -3480,19 +3480,19 @@ function adoptValue( value, resolve, reject, noValue ) {
 	}
 }
 
-UntiyJQ.extend( {
+$$.extend( {
 
 	Deferred: function( func ) {
 		var tuples = [
 
 				// action, add listener, callbacks,
 				// ... .then handlers, argument index, [final state]
-				[ "notify", "progress", UntiyJQ.Callbacks( "memory" ),
-					UntiyJQ.Callbacks( "memory" ), 2 ],
-				[ "resolve", "done", UntiyJQ.Callbacks( "once memory" ),
-					UntiyJQ.Callbacks( "once memory" ), 0, "resolved" ],
-				[ "reject", "fail", UntiyJQ.Callbacks( "once memory" ),
-					UntiyJQ.Callbacks( "once memory" ), 1, "rejected" ]
+				[ "notify", "progress", $$.Callbacks( "memory" ),
+					$$.Callbacks( "memory" ), 2 ],
+				[ "resolve", "done", $$.Callbacks( "once memory" ),
+					$$.Callbacks( "once memory" ), 0, "resolved" ],
+				[ "reject", "fail", $$.Callbacks( "once memory" ),
+					$$.Callbacks( "once memory" ), 1, "rejected" ]
 			],
 			state = "pending",
 			promise = {
@@ -3511,8 +3511,8 @@ UntiyJQ.extend( {
 				pipe: function( /* fnDone, fnFail, fnProgress */ ) {
 					var fns = arguments;
 
-					return UntiyJQ.Deferred( function( newDefer ) {
-						UntiyJQ.each( tuples, function( i, tuple ) {
+					return $$.Deferred( function( newDefer ) {
+						$$.each( tuples, function( i, tuple ) {
 
 							// Map tuples (progress, done, fail) to arguments (done, fail, progress)
 							var fn = isFunction( fns[ tuple[ 4 ] ] ) && fns[ tuple[ 4 ] ];
@@ -3625,8 +3625,8 @@ UntiyJQ.extend( {
 											mightThrow();
 										} catch ( e ) {
 
-											if ( UntiyJQ.Deferred.exceptionHook ) {
-												UntiyJQ.Deferred.exceptionHook( e,
+											if ( $$.Deferred.exceptionHook ) {
+												$$.Deferred.exceptionHook( e,
 													process.stackTrace );
 											}
 
@@ -3657,15 +3657,15 @@ UntiyJQ.extend( {
 
 								// Call an optional hook to record the stack, in case of exception
 								// since it's otherwise lost when execution goes async
-								if ( UntiyJQ.Deferred.getStackHook ) {
-									process.stackTrace = UntiyJQ.Deferred.getStackHook();
+								if ( $$.Deferred.getStackHook ) {
+									process.stackTrace = $$.Deferred.getStackHook();
 								}
 								window.setTimeout( process );
 							}
 						};
 					}
 
-					return UntiyJQ.Deferred( function( newDefer ) {
+					return $$.Deferred( function( newDefer ) {
 
 						// progress_handlers.add( ... )
 						tuples[ 0 ][ 3 ].add(
@@ -3706,13 +3706,13 @@ UntiyJQ.extend( {
 				// Get a promise for this deferred
 				// If obj is provided, the promise aspect is added to the object
 				promise: function( obj ) {
-					return obj != null ? UntiyJQ.extend( obj, promise ) : promise;
+					return obj != null ? $$.extend( obj, promise ) : promise;
 				}
 			},
 			deferred = {};
 
 		// Add list-specific methods
-		UntiyJQ.each( tuples, function( i, tuple ) {
+		$$.each( tuples, function( i, tuple ) {
 			var list = tuple[ 2 ],
 				stateString = tuple[ 5 ];
 
@@ -3793,7 +3793,7 @@ UntiyJQ.extend( {
 			resolveValues = slice.call( arguments ),
 
 			// the master Deferred
-			master = UntiyJQ.Deferred(),
+			master = $$.Deferred(),
 
 			// subordinate callback factory
 			updateFunc = function( i ) {
@@ -3833,19 +3833,19 @@ UntiyJQ.extend( {
 // warn about them ASAP rather than swallowing them by default.
 var rerrorNames = /^(Eval|Internal|Range|Reference|Syntax|Type|URI)Error$/;
 
-UntiyJQ.Deferred.exceptionHook = function( error, stack ) {
+$$.Deferred.exceptionHook = function( error, stack ) {
 
 	// Support: IE 8 - 9 only
 	// Console exists when dev tools are open, which can happen at any time
 	if ( window.console && window.console.warn && error && rerrorNames.test( error.name ) ) {
-		window.console.warn( "UntiyJQ.Deferred exception: " + error.message, error.stack, stack );
+		window.console.warn( "$$.Deferred exception: " + error.message, error.stack, stack );
 	}
 };
 
 
 
 
-UntiyJQ.readyException = function( error ) {
+$$.readyException = function( error ) {
 	window.setTimeout( function() {
 		throw error;
 	} );
@@ -3855,24 +3855,24 @@ UntiyJQ.readyException = function( error ) {
 
 
 // The deferred used on DOM ready
-var readyList = UntiyJQ.Deferred();
+var readyList = $$.Deferred();
 
-UntiyJQ.fn.ready = function( fn ) {
+$$.fn.ready = function( fn ) {
 
 	readyList
 		.then( fn )
 
-		// Wrap UntiyJQ.readyException in a function so that the lookup
+		// Wrap $$.readyException in a function so that the lookup
 		// happens at the time of error handling instead of callback
 		// registration.
 		.catch( function( error ) {
-			UntiyJQ.readyException( error );
+			$$.readyException( error );
 		} );
 
 	return this;
 };
 
-UntiyJQ.extend( {
+$$.extend( {
 
 	// Is the DOM ready to be used? Set to true once it occurs.
 	isReady: false,
@@ -3885,30 +3885,30 @@ UntiyJQ.extend( {
 	ready: function( wait ) {
 
 		// Abort if there are pending holds or we're already ready
-		if ( wait === true ? --UntiyJQ.readyWait : UntiyJQ.isReady ) {
+		if ( wait === true ? --$$.readyWait : $$.isReady ) {
 			return;
 		}
 
 		// Remember that the DOM is ready
-		UntiyJQ.isReady = true;
+		$$.isReady = true;
 
 		// If a normal DOM Ready event fired, decrement, and wait if need be
-		if ( wait !== true && --UntiyJQ.readyWait > 0 ) {
+		if ( wait !== true && --$$.readyWait > 0 ) {
 			return;
 		}
 
 		// If there are functions bound, to execute
-		readyList.resolveWith( document, [ UntiyJQ ] );
+		readyList.resolveWith( document, [ $$ ] );
 	}
 } );
 
-UntiyJQ.ready.then = readyList.then;
+$$.ready.then = readyList.then;
 
 // The ready event handler and self cleanup method
 function completed() {
 	document.removeEventListener( "DOMContentLoaded", completed );
 	window.removeEventListener( "load", completed );
-	UntiyJQ.ready();
+	$$.ready();
 }
 
 // Catch cases where $(document).ready() is called
@@ -3919,7 +3919,7 @@ if ( document.readyState === "complete" ||
 	( document.readyState !== "loading" && !document.documentElement.doScroll ) ) {
 
 	// Handle it asynchronously to allow scripts the opportunity to delay ready
-	window.setTimeout( UntiyJQ.ready );
+	window.setTimeout( $$.ready );
 
 } else {
 
@@ -3966,7 +3966,7 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 			} else {
 				bulk = fn;
 				fn = function( elem, key, value ) {
-					return bulk.call( UntiyJQ( elem ), value );
+					return bulk.call( $$( elem ), value );
 				};
 			}
 		}
@@ -4025,7 +4025,7 @@ var acceptData = function( owner ) {
 
 
 function Data() {
-	this.expando = UntiyJQ.expando + Data.uid++;
+	this.expando = $$.expando + Data.uid++;
 }
 
 Data.uid = 1;
@@ -4156,7 +4156,7 @@ Data.prototype = {
 		}
 
 		// Remove the expando if there's no more data
-		if ( key === undefined || UntiyJQ.isEmptyObject( cache ) ) {
+		if ( key === undefined || $$.isEmptyObject( cache ) ) {
 
 			// Support: Chrome <=35 - 45
 			// Webkit & Blink performance suffers when deleting properties
@@ -4171,7 +4171,7 @@ Data.prototype = {
 	},
 	hasData: function( owner ) {
 		var cache = owner[ this.expando ];
-		return cache !== undefined && !UntiyJQ.isEmptyObject( cache );
+		return cache !== undefined && !$$.isEmptyObject( cache );
 	}
 };
 var dataPriv = new Data();
@@ -4241,7 +4241,7 @@ function dataAttr( elem, key, data ) {
 	return data;
 }
 
-UntiyJQ.extend( {
+$$.extend( {
 	hasData: function( elem ) {
 		return dataUser.hasData( elem ) || dataPriv.hasData( elem );
 	},
@@ -4265,7 +4265,7 @@ UntiyJQ.extend( {
 	}
 } );
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	data: function( key, value ) {
 		var i, name, data,
 			elem = this[ 0 ],
@@ -4307,9 +4307,9 @@ UntiyJQ.fn.extend( {
 		return access( this, function( value ) {
 			var data;
 
-			// The calling UntiyJQ object (element matches) is not empty
+			// The calling $$ object (element matches) is not empty
 			// (and therefore has an element appears at this[ 0 ]) and the
-			// `value` parameter was not undefined. An empty UntiyJQ object
+			// `value` parameter was not undefined. An empty $$ object
 			// will result in `undefined` for elem = this[ 0 ] which will
 			// throw an exception if an attempt to read a data cache is made.
 			if ( elem && value === undefined ) {
@@ -4349,7 +4349,7 @@ UntiyJQ.fn.extend( {
 } );
 
 
-UntiyJQ.extend( {
+$$.extend( {
 	queue: function( elem, type, data ) {
 		var queue;
 
@@ -4360,7 +4360,7 @@ UntiyJQ.extend( {
 			// Speed up dequeue by getting out quickly if this is just a lookup
 			if ( data ) {
 				if ( !queue || Array.isArray( data ) ) {
-					queue = dataPriv.access( elem, type, UntiyJQ.makeArray( data ) );
+					queue = dataPriv.access( elem, type, $$.makeArray( data ) );
 				} else {
 					queue.push( data );
 				}
@@ -4372,12 +4372,12 @@ UntiyJQ.extend( {
 	dequeue: function( elem, type ) {
 		type = type || "fx";
 
-		var queue = UntiyJQ.queue( elem, type ),
+		var queue = $$.queue( elem, type ),
 			startLength = queue.length,
 			fn = queue.shift(),
-			hooks = UntiyJQ._queueHooks( elem, type ),
+			hooks = $$._queueHooks( elem, type ),
 			next = function() {
-				UntiyJQ.dequeue( elem, type );
+				$$.dequeue( elem, type );
 			};
 
 		// If the fx queue is dequeued, always remove the progress sentinel
@@ -4408,14 +4408,14 @@ UntiyJQ.extend( {
 	_queueHooks: function( elem, type ) {
 		var key = type + "queueHooks";
 		return dataPriv.get( elem, key ) || dataPriv.access( elem, key, {
-			empty: UntiyJQ.Callbacks( "once memory" ).add( function() {
+			empty: $$.Callbacks( "once memory" ).add( function() {
 				dataPriv.remove( elem, [ type + "queue", key ] );
 			} )
 		} );
 	}
 } );
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	queue: function( type, data ) {
 		var setter = 2;
 
@@ -4426,25 +4426,25 @@ UntiyJQ.fn.extend( {
 		}
 
 		if ( arguments.length < setter ) {
-			return UntiyJQ.queue( this[ 0 ], type );
+			return $$.queue( this[ 0 ], type );
 		}
 
 		return data === undefined ?
 			this :
 			this.each( function() {
-				var queue = UntiyJQ.queue( this, type, data );
+				var queue = $$.queue( this, type, data );
 
 				// Ensure a hooks for this queue
-				UntiyJQ._queueHooks( this, type );
+				$$._queueHooks( this, type );
 
 				if ( type === "fx" && queue[ 0 ] !== "inprogress" ) {
-					UntiyJQ.dequeue( this, type );
+					$$.dequeue( this, type );
 				}
 			} );
 	},
 	dequeue: function( type ) {
 		return this.each( function() {
-			UntiyJQ.dequeue( this, type );
+			$$.dequeue( this, type );
 		} );
 	},
 	clearQueue: function( type ) {
@@ -4456,7 +4456,7 @@ UntiyJQ.fn.extend( {
 	promise: function( type, obj ) {
 		var tmp,
 			count = 1,
-			defer = UntiyJQ.Deferred(),
+			defer = $$.Deferred(),
 			elements = this,
 			i = this.length,
 			resolve = function() {
@@ -4494,7 +4494,7 @@ var documentElement = document.documentElement;
 
 
 	var isAttached = function( elem ) {
-			return UntiyJQ.contains( elem.ownerDocument, elem );
+			return $$.contains( elem.ownerDocument, elem );
 		},
 		composed = { composed: true };
 
@@ -4505,13 +4505,13 @@ var documentElement = document.documentElement;
 	// leading to errors. We need to check for `getRootNode`.
 	if ( documentElement.getRootNode ) {
 		isAttached = function( elem ) {
-			return UntiyJQ.contains( elem.ownerDocument, elem ) ||
+			return $$.contains( elem.ownerDocument, elem ) ||
 				elem.getRootNode( composed ) === elem.ownerDocument;
 		};
 	}
 var isHiddenWithinTree = function( elem, el ) {
 
-		// isHiddenWithinTree might be called from UntiyJQ#filter function;
+		// isHiddenWithinTree might be called from $$#filter function;
 		// in that case, element will be second argument
 		elem = el || elem;
 
@@ -4525,7 +4525,7 @@ var isHiddenWithinTree = function( elem, el ) {
 			// in the document.
 			isAttached( elem ) &&
 
-			UntiyJQ.css( elem, "display" ) === "none";
+			$$.css( elem, "display" ) === "none";
 	};
 
 var swap = function( elem, options, callback, args ) {
@@ -4559,15 +4559,15 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 				return tween.cur();
 			} :
 			function() {
-				return UntiyJQ.css( elem, prop, "" );
+				return $$.css( elem, prop, "" );
 			},
 		initial = currentValue(),
-		unit = valueParts && valueParts[ 3 ] || ( UntiyJQ.cssNumber[ prop ] ? "" : "px" ),
+		unit = valueParts && valueParts[ 3 ] || ( $$.cssNumber[ prop ] ? "" : "px" ),
 
 		// Starting value computation is required for potential unit mismatches
 		initialInUnit = elem.nodeType &&
-			( UntiyJQ.cssNumber[ prop ] || unit !== "px" && +initial ) &&
-			rcssNum.exec( UntiyJQ.css( elem, prop ) );
+			( $$.cssNumber[ prop ] || unit !== "px" && +initial ) &&
+			rcssNum.exec( $$.css( elem, prop ) );
 
 	if ( initialInUnit && initialInUnit[ 3 ] !== unit ) {
 
@@ -4575,7 +4575,7 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 		// Halve the iteration target value to prevent interference from CSS upper bounds (gh-2144)
 		initial = initial / 2;
 
-		// Trust units reported by UntiyJQ.css
+		// Trust units reported by $$.css
 		unit = unit || initialInUnit[ 3 ];
 
 		// Iteratively approximate from a nonzero starting point
@@ -4585,7 +4585,7 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 
 			// Evaluate and update our best guess (doubling guesses that zero out).
 			// Finish if the scale equals or crosses 1 (making the old*new product non-positive).
-			UntiyJQ.style( elem, prop, initialInUnit + unit );
+			$$.style( elem, prop, initialInUnit + unit );
 			if ( ( 1 - scale ) * ( 1 - ( scale = currentValue() / initial || 0.5 ) ) <= 0 ) {
 				maxIterations = 0;
 			}
@@ -4594,7 +4594,7 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 		}
 
 		initialInUnit = initialInUnit * 2;
-		UntiyJQ.style( elem, prop, initialInUnit + unit );
+		$$.style( elem, prop, initialInUnit + unit );
 
 		// Make sure we update the tween properties later on
 		valueParts = valueParts || [];
@@ -4630,7 +4630,7 @@ function getDefaultDisplay( elem ) {
 	}
 
 	temp = doc.body.appendChild( doc.createElement( nodeName ) );
-	display = UntiyJQ.css( temp, "display" );
+	display = $$.css( temp, "display" );
 
 	temp.parentNode.removeChild( temp );
 
@@ -4690,7 +4690,7 @@ function showHide( elements, show ) {
 	return elements;
 }
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	show: function() {
 		return showHide( this, true );
 	},
@@ -4704,9 +4704,9 @@ UntiyJQ.fn.extend( {
 
 		return this.each( function() {
 			if ( isHiddenWithinTree( this ) ) {
-				UntiyJQ( this ).show();
+				$$( this ).show();
 			} else {
-				UntiyJQ( this ).hide();
+				$$( this ).hide();
 			}
 		} );
 	}
@@ -4760,7 +4760,7 @@ function getAll( context, tag ) {
 	}
 
 	if ( tag === undefined || tag && nodeName( context, tag ) ) {
-		return UntiyJQ.merge( [ context ], ret );
+		return $$.merge( [ context ], ret );
 	}
 
 	return ret;
@@ -4801,7 +4801,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 
 				// Support: Android <=4.0 only, PhantomJS 1 only
 				// push.apply(_, arraylike) throws on ancient WebKit
-				UntiyJQ.merge( nodes, elem.nodeType ? [ elem ] : elem );
+				$$.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
 			// Convert non-html into a text node
 			} else if ( !rhtml.test( elem ) ) {
@@ -4814,7 +4814,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				// Deserialize a standard representation
 				tag = ( rtagName.exec( elem ) || [ "", "" ] )[ 1 ].toLowerCase();
 				wrap = wrapMap[ tag ] || wrapMap._default;
-				tmp.innerHTML = wrap[ 1 ] + UntiyJQ.htmlPrefilter( elem ) + wrap[ 2 ];
+				tmp.innerHTML = wrap[ 1 ] + $$.htmlPrefilter( elem ) + wrap[ 2 ];
 
 				// Descend through wrappers to the right content
 				j = wrap[ 0 ];
@@ -4824,7 +4824,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 
 				// Support: Android <=4.0 only, PhantomJS 1 only
 				// push.apply(_, arraylike) throws on ancient WebKit
-				UntiyJQ.merge( nodes, tmp.childNodes );
+				$$.merge( nodes, tmp.childNodes );
 
 				// Remember the top-level container
 				tmp = fragment.firstChild;
@@ -4842,7 +4842,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 	while ( ( elem = nodes[ i++ ] ) ) {
 
 		// Skip elements already in the context collection (trac-4087)
-		if ( selection && UntiyJQ.inArray( elem, selection ) > -1 ) {
+		if ( selection && $$.inArray( elem, selection ) > -1 ) {
 			if ( ignored ) {
 				ignored.push( elem );
 			}
@@ -4925,7 +4925,7 @@ function expectSync( elem, type ) {
 
 // Support: IE <=9 only
 // Accessing document.activeElement can throw unexpectedly
-// https://bugs.UntiyJQ.com/ticket/13393
+// https://bugs.$$.com/ticket/13393
 function safeActiveElement() {
 	try {
 		return document.activeElement;
@@ -4981,15 +4981,15 @@ function on( elem, types, selector, data, fn, one ) {
 		fn = function( event ) {
 
 			// Can use an empty set, since event contains the info
-			UntiyJQ().off( event );
+			$$().off( event );
 			return origFn.apply( this, arguments );
 		};
 
 		// Use same guid so caller can remove using origFn
-		fn.guid = origFn.guid || ( origFn.guid = UntiyJQ.guid++ );
+		fn.guid = origFn.guid || ( origFn.guid = $$.guid++ );
 	}
 	return elem.each( function() {
-		UntiyJQ.event.add( this, types, fn, data, selector );
+		$$.event.add( this, types, fn, data, selector );
 	} );
 }
 
@@ -4997,7 +4997,7 @@ function on( elem, types, selector, data, fn, one ) {
  * Helper functions for managing events -- not part of the public interface.
  * Props to Dean Edwards' addEvent library for many of the ideas.
  */
-UntiyJQ.event = {
+$$.event = {
 
 	global: {},
 
@@ -5023,12 +5023,12 @@ UntiyJQ.event = {
 		// Ensure that invalid selectors throw exceptions at attach time
 		// Evaluate against documentElement in case elem is a non-element node (e.g., document)
 		if ( selector ) {
-			UntiyJQ.find.matchesSelector( documentElement, selector );
+			$$.find.matchesSelector( documentElement, selector );
 		}
 
 		// Make sure that the handler has a unique ID, used to find/remove it later
 		if ( !handler.guid ) {
-			handler.guid = UntiyJQ.guid++;
+			handler.guid = $$.guid++;
 		}
 
 		// Init the element's event structure and main handler, if this is the first
@@ -5038,10 +5038,10 @@ UntiyJQ.event = {
 		if ( !( eventHandle = elemData.handle ) ) {
 			eventHandle = elemData.handle = function( e ) {
 
-				// Discard the second event of a UntiyJQ.event.trigger() and
+				// Discard the second event of a $$.event.trigger() and
 				// when an event is called after a page has unloaded
-				return typeof UntiyJQ !== "undefined" && UntiyJQ.event.triggered !== e.type ?
-					UntiyJQ.event.dispatch.apply( elem, arguments ) : undefined;
+				return typeof $$ !== "undefined" && $$.event.triggered !== e.type ?
+					$$.event.dispatch.apply( elem, arguments ) : undefined;
 			};
 		}
 
@@ -5059,23 +5059,23 @@ UntiyJQ.event = {
 			}
 
 			// If event changes its type, use the special event handlers for the changed type
-			special = UntiyJQ.event.special[ type ] || {};
+			special = $$.event.special[ type ] || {};
 
 			// If selector defined, determine special event api type, otherwise given type
 			type = ( selector ? special.delegateType : special.bindType ) || type;
 
 			// Update special based on newly reset type
-			special = UntiyJQ.event.special[ type ] || {};
+			special = $$.event.special[ type ] || {};
 
 			// handleObj is passed to all event handlers
-			handleObj = UntiyJQ.extend( {
+			handleObj = $$.extend( {
 				type: type,
 				origType: origType,
 				data: data,
 				handler: handler,
 				guid: handler.guid,
 				selector: selector,
-				needsContext: selector && UntiyJQ.expr.match.needsContext.test( selector ),
+				needsContext: selector && $$.expr.match.needsContext.test( selector ),
 				namespace: namespaces.join( "." )
 			}, handleObjIn );
 
@@ -5110,7 +5110,7 @@ UntiyJQ.event = {
 			}
 
 			// Keep track of which events have ever been used, for event optimization
-			UntiyJQ.event.global[ type ] = true;
+			$$.event.global[ type ] = true;
 		}
 
 	},
@@ -5138,12 +5138,12 @@ UntiyJQ.event = {
 			// Unbind all events (on this namespace, if provided) for the element
 			if ( !type ) {
 				for ( type in events ) {
-					UntiyJQ.event.remove( elem, type + types[ t ], handler, selector, true );
+					$$.event.remove( elem, type + types[ t ], handler, selector, true );
 				}
 				continue;
 			}
 
-			special = UntiyJQ.event.special[ type ] || {};
+			special = $$.event.special[ type ] || {};
 			type = ( selector ? special.delegateType : special.bindType ) || type;
 			handlers = events[ type ] || [];
 			tmp = tmp[ 2 ] &&
@@ -5176,7 +5176,7 @@ UntiyJQ.event = {
 				if ( !special.teardown ||
 					special.teardown.call( elem, namespaces, elemData.handle ) === false ) {
 
-					UntiyJQ.removeEvent( elem, type, elemData.handle );
+					$$.removeEvent( elem, type, elemData.handle );
 				}
 
 				delete events[ type ];
@@ -5184,22 +5184,22 @@ UntiyJQ.event = {
 		}
 
 		// Remove data and the expando if it's no longer used
-		if ( UntiyJQ.isEmptyObject( events ) ) {
+		if ( $$.isEmptyObject( events ) ) {
 			dataPriv.remove( elem, "handle events" );
 		}
 	},
 
 	dispatch: function( nativeEvent ) {
 
-		// Make a writable UntiyJQ.Event from the native event object
-		var event = UntiyJQ.event.fix( nativeEvent );
+		// Make a writable $$.Event from the native event object
+		var event = $$.event.fix( nativeEvent );
 
 		var i, j, ret, matched, handleObj, handlerQueue,
 			args = new Array( arguments.length ),
 			handlers = ( dataPriv.get( this, "events" ) || {} )[ event.type ] || [],
-			special = UntiyJQ.event.special[ event.type ] || {};
+			special = $$.event.special[ event.type ] || {};
 
-		// Use the fix-ed UntiyJQ.Event rather than the (read-only) native event
+		// Use the fix-ed $$.Event rather than the (read-only) native event
 		args[ 0 ] = event;
 
 		for ( i = 1; i < arguments.length; i++ ) {
@@ -5214,7 +5214,7 @@ UntiyJQ.event = {
 		}
 
 		// Determine handlers
-		handlerQueue = UntiyJQ.event.handlers.call( this, event, handlers );
+		handlerQueue = $$.event.handlers.call( this, event, handlers );
 
 		// Run delegates first; they may want to stop propagation beneath us
 		i = 0;
@@ -5233,7 +5233,7 @@ UntiyJQ.event = {
 					event.handleObj = handleObj;
 					event.data = handleObj.data;
 
-					ret = ( ( UntiyJQ.event.special[ handleObj.origType ] || {} ).handle ||
+					ret = ( ( $$.event.special[ handleObj.origType ] || {} ).handle ||
 						handleObj.handler ).apply( matched.elem, args );
 
 					if ( ret !== undefined ) {
@@ -5289,8 +5289,8 @@ UntiyJQ.event = {
 
 						if ( matchedSelectors[ sel ] === undefined ) {
 							matchedSelectors[ sel ] = handleObj.needsContext ?
-								UntiyJQ( sel, this ).index( cur ) > -1 :
-								UntiyJQ.find( sel, this, null, [ cur ] ).length;
+								$$( sel, this ).index( cur ) > -1 :
+								$$.find( sel, this, null, [ cur ] ).length;
 						}
 						if ( matchedSelectors[ sel ] ) {
 							matchedHandlers.push( handleObj );
@@ -5313,7 +5313,7 @@ UntiyJQ.event = {
 	},
 
 	addProp: function( name, hook ) {
-		Object.defineProperty( UntiyJQ.Event.prototype, name, {
+		Object.defineProperty( $$.Event.prototype, name, {
 			enumerable: true,
 			configurable: true,
 
@@ -5341,9 +5341,9 @@ UntiyJQ.event = {
 	},
 
 	fix: function( originalEvent ) {
-		return originalEvent[ UntiyJQ.expando ] ?
+		return originalEvent[ $$.expando ] ?
 			originalEvent :
-			new UntiyJQ.Event( originalEvent );
+			new $$.Event( originalEvent );
 	},
 
 	special: {
@@ -5419,17 +5419,17 @@ UntiyJQ.event = {
 // already occurred before other listeners are invoked.
 function leverageNative( el, type, expectSync ) {
 
-	// Missing expectSync indicates a trigger call, which must force setup through UntiyJQ.event.add
+	// Missing expectSync indicates a trigger call, which must force setup through $$.event.add
 	if ( !expectSync ) {
 		if ( dataPriv.get( el, type ) === undefined ) {
-			UntiyJQ.event.add( el, type, returnTrue );
+			$$.event.add( el, type, returnTrue );
 		}
 		return;
 	}
 
 	// Register the controller as a special universal handler for all event namespaces
 	dataPriv.set( el, type, false );
-	UntiyJQ.event.add( el, type, {
+	$$.event.add( el, type, {
 		namespace: false,
 		handler: function( event ) {
 			var notAsync, result,
@@ -5473,7 +5473,7 @@ function leverageNative( el, type, expectSync ) {
 				// This technically gets the ordering wrong w.r.t. to `.trigger()` (in which the
 				// bubbling surrogate propagates *after* the non-bubbling base), but that seems
 				// less bad than duplication.
-				} else if ( ( UntiyJQ.event.special[ type ] || {} ).delegateType ) {
+				} else if ( ( $$.event.special[ type ] || {} ).delegateType ) {
 					event.stopPropagation();
 				}
 
@@ -5483,11 +5483,11 @@ function leverageNative( el, type, expectSync ) {
 
 				// ...and capture the result
 				dataPriv.set( this, type, {
-					value: UntiyJQ.event.trigger(
+					value: $$.event.trigger(
 
 						// Support: IE <=9 - 11+
 						// Extend with the prototype to reset the above stopImmediatePropagation()
-						UntiyJQ.extend( saved[ 0 ], UntiyJQ.Event.prototype ),
+						$$.extend( saved[ 0 ], $$.Event.prototype ),
 						saved.slice( 1 ),
 						this
 					)
@@ -5500,7 +5500,7 @@ function leverageNative( el, type, expectSync ) {
 	} );
 }
 
-UntiyJQ.removeEvent = function( elem, type, handle ) {
+$$.removeEvent = function( elem, type, handle ) {
 
 	// This "if" is needed for plain objects
 	if ( elem.removeEventListener ) {
@@ -5508,11 +5508,11 @@ UntiyJQ.removeEvent = function( elem, type, handle ) {
 	}
 };
 
-UntiyJQ.Event = function( src, props ) {
+$$.Event = function( src, props ) {
 
 	// Allow instantiation without the 'new' keyword
-	if ( !( this instanceof UntiyJQ.Event ) ) {
-		return new UntiyJQ.Event( src, props );
+	if ( !( this instanceof $$.Event ) ) {
+		return new $$.Event( src, props );
 	}
 
 	// Event object
@@ -5547,20 +5547,20 @@ UntiyJQ.Event = function( src, props ) {
 
 	// Put explicitly provided properties onto the event object
 	if ( props ) {
-		UntiyJQ.extend( this, props );
+		$$.extend( this, props );
 	}
 
 	// Create a timestamp if incoming event doesn't have one
 	this.timeStamp = src && src.timeStamp || Date.now();
 
 	// Mark it as fixed
-	this[ UntiyJQ.expando ] = true;
+	this[ $$.expando ] = true;
 };
 
-// UntiyJQ.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
+// $$.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
 // https://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
-UntiyJQ.Event.prototype = {
-	constructor: UntiyJQ.Event,
+$$.Event.prototype = {
+	constructor: $$.Event,
 	isDefaultPrevented: returnFalse,
 	isPropagationStopped: returnFalse,
 	isImmediatePropagationStopped: returnFalse,
@@ -5598,7 +5598,7 @@ UntiyJQ.Event.prototype = {
 };
 
 // Includes all common event props including KeyEvent and MouseEvent specific props
-UntiyJQ.each( {
+$$.each( {
 	altKey: true,
 	bubbles: true,
 	cancelable: true,
@@ -5657,10 +5657,10 @@ UntiyJQ.each( {
 
 		return event.which;
 	}
-}, UntiyJQ.event.addProp );
+}, $$.event.addProp );
 
-UntiyJQ.each( { focus: "focusin", blur: "focusout" }, function( type, delegateType ) {
-	UntiyJQ.event.special[ type ] = {
+$$.each( { focus: "focusin", blur: "focusout" }, function( type, delegateType ) {
+	$$.event.special[ type ] = {
 
 		// Utilize native event if possible so blur/focus sequence is correct
 		setup: function() {
@@ -5687,20 +5687,20 @@ UntiyJQ.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTy
 } );
 
 // Create mouseenter/leave events using mouseover/out and event-time checks
-// so that event delegation works in UntiyJQ.
+// so that event delegation works in $$.
 // Do the same for pointerenter/pointerleave and pointerover/pointerout
 //
 // Support: Safari 7 only
 // Safari sends mouseenter too often; see:
 // https://bugs.chromium.org/p/chromium/issues/detail?id=470258
 // for the description of the bug (it existed in older Chrome versions as well).
-UntiyJQ.each( {
+$$.each( {
 	mouseenter: "mouseover",
 	mouseleave: "mouseout",
 	pointerenter: "pointerover",
 	pointerleave: "pointerout"
 }, function( orig, fix ) {
-	UntiyJQ.event.special[ orig ] = {
+	$$.event.special[ orig ] = {
 		delegateType: fix,
 		bindType: fix,
 
@@ -5712,7 +5712,7 @@ UntiyJQ.each( {
 
 			// For mouseenter/leave call the handler if related is outside the target.
 			// NB: No relatedTarget if the mouse left/entered the browser window
-			if ( !related || ( related !== target && !UntiyJQ.contains( target, related ) ) ) {
+			if ( !related || ( related !== target && !$$.contains( target, related ) ) ) {
 				event.type = handleObj.origType;
 				ret = handleObj.handler.apply( this, arguments );
 				event.type = fix;
@@ -5722,7 +5722,7 @@ UntiyJQ.each( {
 	};
 } );
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 
 	on: function( types, selector, data, fn ) {
 		return on( this, types, selector, data, fn );
@@ -5734,9 +5734,9 @@ UntiyJQ.fn.extend( {
 		var handleObj, type;
 		if ( types && types.preventDefault && types.handleObj ) {
 
-			// ( event )  dispatched UntiyJQ.Event
+			// ( event )  dispatched $$.Event
 			handleObj = types.handleObj;
-			UntiyJQ( types.delegateTarget ).off(
+			$$( types.delegateTarget ).off(
 				handleObj.namespace ?
 					handleObj.origType + "." + handleObj.namespace :
 					handleObj.origType,
@@ -5763,7 +5763,7 @@ UntiyJQ.fn.extend( {
 			fn = returnFalse;
 		}
 		return this.each( function() {
-			UntiyJQ.event.remove( this, types, fn, selector );
+			$$.event.remove( this, types, fn, selector );
 		} );
 	}
 } );
@@ -5792,7 +5792,7 @@ function manipulationTarget( elem, content ) {
 	if ( nodeName( elem, "table" ) &&
 		nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ) {
 
-		return UntiyJQ( elem ).children( "tbody" )[ 0 ] || elem;
+		return $$( elem ).children( "tbody" )[ 0 ] || elem;
 	}
 
 	return elem;
@@ -5832,7 +5832,7 @@ function cloneCopyEvent( src, dest ) {
 
 			for ( type in events ) {
 				for ( i = 0, l = events[ type ].length; i < l; i++ ) {
-					UntiyJQ.event.add( dest, type, events[ type ][ i ] );
+					$$.event.add( dest, type, events[ type ][ i ] );
 				}
 			}
 		}
@@ -5841,7 +5841,7 @@ function cloneCopyEvent( src, dest ) {
 	// 2. Copy user data
 	if ( dataUser.hasData( src ) ) {
 		udataOld = dataUser.access( src );
-		udataCur = UntiyJQ.extend( {}, udataOld );
+		udataCur = $$.extend( {}, udataOld );
 
 		dataUser.set( dest, udataCur );
 	}
@@ -5896,7 +5896,7 @@ function domManip( collection, args, callback, ignored ) {
 
 		// Require either new content or an interest in ignored elements to invoke the callback
 		if ( first || ignored ) {
-			scripts = UntiyJQ.map( getAll( fragment, "script" ), disableScript );
+			scripts = $$.map( getAll( fragment, "script" ), disableScript );
 			hasScripts = scripts.length;
 
 			// Use the original fragment for the last item
@@ -5906,14 +5906,14 @@ function domManip( collection, args, callback, ignored ) {
 				node = fragment;
 
 				if ( i !== iNoClone ) {
-					node = UntiyJQ.clone( node, true, true );
+					node = $$.clone( node, true, true );
 
 					// Keep references to cloned scripts for later restoration
 					if ( hasScripts ) {
 
 						// Support: Android <=4.0 only, PhantomJS 1 only
 						// push.apply(_, arraylike) throws on ancient WebKit
-						UntiyJQ.merge( scripts, getAll( node, "script" ) );
+						$$.merge( scripts, getAll( node, "script" ) );
 					}
 				}
 
@@ -5924,20 +5924,20 @@ function domManip( collection, args, callback, ignored ) {
 				doc = scripts[ scripts.length - 1 ].ownerDocument;
 
 				// Reenable scripts
-				UntiyJQ.map( scripts, restoreScript );
+				$$.map( scripts, restoreScript );
 
 				// Evaluate executable scripts on first document insertion
 				for ( i = 0; i < hasScripts; i++ ) {
 					node = scripts[ i ];
 					if ( rscriptType.test( node.type || "" ) &&
 						!dataPriv.access( node, "globalEval" ) &&
-						UntiyJQ.contains( doc, node ) ) {
+						$$.contains( doc, node ) ) {
 
 						if ( node.src && ( node.type || "" ).toLowerCase()  !== "module" ) {
 
 							// Optional AJAX dependency, but won't run scripts if not present
-							if ( UntiyJQ._evalUrl && !node.noModule ) {
-								UntiyJQ._evalUrl( node.src, {
+							if ( $$._evalUrl && !node.noModule ) {
+								$$._evalUrl( node.src, {
 									nonce: node.nonce || node.getAttribute( "nonce" )
 								} );
 							}
@@ -5955,12 +5955,12 @@ function domManip( collection, args, callback, ignored ) {
 
 function remove( elem, selector, keepData ) {
 	var node,
-		nodes = selector ? UntiyJQ.filter( selector, elem ) : elem,
+		nodes = selector ? $$.filter( selector, elem ) : elem,
 		i = 0;
 
 	for ( ; ( node = nodes[ i ] ) != null; i++ ) {
 		if ( !keepData && node.nodeType === 1 ) {
-			UntiyJQ.cleanData( getAll( node ) );
+			$$.cleanData( getAll( node ) );
 		}
 
 		if ( node.parentNode ) {
@@ -5974,7 +5974,7 @@ function remove( elem, selector, keepData ) {
 	return elem;
 }
 
-UntiyJQ.extend( {
+$$.extend( {
 	htmlPrefilter: function( html ) {
 		return html.replace( rxhtmlTag, "<$1></$2>" );
 	},
@@ -5986,7 +5986,7 @@ UntiyJQ.extend( {
 
 		// Fix IE cloning issues
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
-				!UntiyJQ.isXMLDoc( elem ) ) {
+				!$$.isXMLDoc( elem ) ) {
 
 			// We eschew Sizzle here for performance reasons: https://jsperf.com/getall-vs-sizzle/2
 			destElements = getAll( clone );
@@ -6023,7 +6023,7 @@ UntiyJQ.extend( {
 
 	cleanData: function( elems ) {
 		var data, elem, type,
-			special = UntiyJQ.event.special,
+			special = $$.event.special,
 			i = 0;
 
 		for ( ; ( elem = elems[ i ] ) !== undefined; i++ ) {
@@ -6032,11 +6032,11 @@ UntiyJQ.extend( {
 					if ( data.events ) {
 						for ( type in data.events ) {
 							if ( special[ type ] ) {
-								UntiyJQ.event.remove( elem, type );
+								$$.event.remove( elem, type );
 
-							// This is a shortcut to avoid UntiyJQ.event.remove's overhead
+							// This is a shortcut to avoid $$.event.remove's overhead
 							} else {
-								UntiyJQ.removeEvent( elem, type, data.handle );
+								$$.removeEvent( elem, type, data.handle );
 							}
 						}
 					}
@@ -6056,7 +6056,7 @@ UntiyJQ.extend( {
 	}
 } );
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	detach: function( selector ) {
 		return remove( this, selector, true );
 	},
@@ -6068,7 +6068,7 @@ UntiyJQ.fn.extend( {
 	text: function( value ) {
 		return access( this, function( value ) {
 			return value === undefined ?
-				UntiyJQ.text( this ) :
+				$$.text( this ) :
 				this.empty().each( function() {
 					if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
 						this.textContent = value;
@@ -6119,7 +6119,7 @@ UntiyJQ.fn.extend( {
 			if ( elem.nodeType === 1 ) {
 
 				// Prevent memory leaks
-				UntiyJQ.cleanData( getAll( elem, false ) );
+				$$.cleanData( getAll( elem, false ) );
 
 				// Remove any remaining nodes
 				elem.textContent = "";
@@ -6134,7 +6134,7 @@ UntiyJQ.fn.extend( {
 		deepDataAndEvents = deepDataAndEvents == null ? dataAndEvents : deepDataAndEvents;
 
 		return this.map( function() {
-			return UntiyJQ.clone( this, dataAndEvents, deepDataAndEvents );
+			return $$.clone( this, dataAndEvents, deepDataAndEvents );
 		} );
 	},
 
@@ -6152,7 +6152,7 @@ UntiyJQ.fn.extend( {
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
-				value = UntiyJQ.htmlPrefilter( value );
+				value = $$.htmlPrefilter( value );
 
 				try {
 					for ( ; i < l; i++ ) {
@@ -6160,7 +6160,7 @@ UntiyJQ.fn.extend( {
 
 						// Remove element nodes and prevent memory leaks
 						if ( elem.nodeType === 1 ) {
-							UntiyJQ.cleanData( getAll( elem, false ) );
+							$$.cleanData( getAll( elem, false ) );
 							elem.innerHTML = value;
 						}
 					}
@@ -6184,8 +6184,8 @@ UntiyJQ.fn.extend( {
 		return domManip( this, arguments, function( elem ) {
 			var parent = this.parentNode;
 
-			if ( UntiyJQ.inArray( this, ignored ) < 0 ) {
-				UntiyJQ.cleanData( getAll( this ) );
+			if ( $$.inArray( this, ignored ) < 0 ) {
+				$$.cleanData( getAll( this ) );
 				if ( parent ) {
 					parent.replaceChild( elem, this );
 				}
@@ -6196,23 +6196,23 @@ UntiyJQ.fn.extend( {
 	}
 } );
 
-UntiyJQ.each( {
+$$.each( {
 	appendTo: "append",
 	prependTo: "prepend",
 	insertBefore: "before",
 	insertAfter: "after",
 	replaceAll: "replaceWith"
 }, function( name, original ) {
-	UntiyJQ.fn[ name ] = function( selector ) {
+	$$.fn[ name ] = function( selector ) {
 		var elems,
 			ret = [],
-			insert = UntiyJQ( selector ),
+			insert = $$( selector ),
 			last = insert.length - 1,
 			i = 0;
 
 		for ( ; i <= last; i++ ) {
 			elems = i === last ? this : this.clone( true );
-			UntiyJQ( insert[ i ] )[ original ]( elems );
+			$$( insert[ i ] )[ original ]( elems );
 
 			// Support: Android <=4.0 only, PhantomJS 1 only
 			// .get() because push.apply(_, arraylike) throws on ancient WebKit
@@ -6310,7 +6310,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 	div.cloneNode( true ).style.backgroundClip = "";
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
 
-	UntiyJQ.extend( support, {
+	$$.extend( support, {
 		boxSizingReliable: function() {
 			computeStyleTests();
 			return boxSizingReliableVal;
@@ -6353,7 +6353,7 @@ function curCSS( elem, name, computed ) {
 		ret = computed.getPropertyValue( name ) || computed[ name ];
 
 		if ( ret === "" && !isAttached( elem ) ) {
-			ret = UntiyJQ.style( elem, name );
+			ret = $$.style( elem, name );
 		}
 
 		// A tribute to the "awesome hack by Dean Edwards"
@@ -6427,9 +6427,9 @@ function vendorPropName( name ) {
 	}
 }
 
-// Return a potentially-mapped UntiyJQ.cssProps or vendor prefixed property
+// Return a potentially-mapped $$.cssProps or vendor prefixed property
 function finalPropName( name ) {
-	var final = UntiyJQ.cssProps[ name ] || vendorProps[ name ];
+	var final = $$.cssProps[ name ] || vendorProps[ name ];
 
 	if ( final ) {
 		return final;
@@ -6480,22 +6480,22 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 
 		// Both box models exclude margin
 		if ( box === "margin" ) {
-			delta += UntiyJQ.css( elem, box + cssExpand[ i ], true, styles );
+			delta += $$.css( elem, box + cssExpand[ i ], true, styles );
 		}
 
 		// If we get here with a content-box, we're seeking "padding" or "border" or "margin"
 		if ( !isBorderBox ) {
 
 			// Add padding
-			delta += UntiyJQ.css( elem, "padding" + cssExpand[ i ], true, styles );
+			delta += $$.css( elem, "padding" + cssExpand[ i ], true, styles );
 
 			// For "border" or "margin", add border
 			if ( box !== "padding" ) {
-				delta += UntiyJQ.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
+				delta += $$.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 
 			// But still keep track of it otherwise
 			} else {
-				extra += UntiyJQ.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
+				extra += $$.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
 
 		// If we get here with a border-box (content + padding + border), we're seeking "content" or
@@ -6504,12 +6504,12 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 
 			// For "content", subtract padding
 			if ( box === "content" ) {
-				delta -= UntiyJQ.css( elem, "padding" + cssExpand[ i ], true, styles );
+				delta -= $$.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}
 
 			// For "content" or "padding", subtract border
 			if ( box !== "margin" ) {
-				delta -= UntiyJQ.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
+				delta -= $$.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
 		}
 	}
@@ -6543,7 +6543,7 @@ function getWidthOrHeight( elem, dimension, extra ) {
 		// Fake content-box until we know it's needed to know the true value.
 		boxSizingNeeded = !support.boxSizingReliable() || extra,
 		isBorderBox = boxSizingNeeded &&
-			UntiyJQ.css( elem, "boxSizing", false, styles ) === "border-box",
+			$$.css( elem, "boxSizing", false, styles ) === "border-box",
 		valueIsBorderBox = isBorderBox,
 
 		val = curCSS( elem, dimension, styles ),
@@ -6569,10 +6569,10 @@ function getWidthOrHeight( elem, dimension, extra ) {
 	// In those cases, the computed value can be trusted to be border-box
 	if ( ( !support.boxSizingReliable() && isBorderBox ||
 		val === "auto" ||
-		!parseFloat( val ) && UntiyJQ.css( elem, "display", false, styles ) === "inline" ) &&
+		!parseFloat( val ) && $$.css( elem, "display", false, styles ) === "inline" ) &&
 		elem.getClientRects().length ) {
 
-		isBorderBox = UntiyJQ.css( elem, "boxSizing", false, styles ) === "border-box";
+		isBorderBox = $$.css( elem, "boxSizing", false, styles ) === "border-box";
 
 		// Where available, offsetWidth/offsetHeight approximate border box dimensions.
 		// Where not available (e.g., SVG), assume unreliable box-sizing and interpret the
@@ -6601,7 +6601,7 @@ function getWidthOrHeight( elem, dimension, extra ) {
 	) + "px";
 }
 
-UntiyJQ.extend( {
+$$.extend( {
 
 	// Add in style property hooks for overriding the default
 	// behavior of getting and setting a style property
@@ -6668,7 +6668,7 @@ UntiyJQ.extend( {
 		}
 
 		// Gets hook for the prefixed version, then unprefixed version
-		hooks = UntiyJQ.cssHooks[ name ] || UntiyJQ.cssHooks[ origName ];
+		hooks = $$.cssHooks[ name ] || $$.cssHooks[ origName ];
 
 		// Check if we're setting a value
 		if ( value !== undefined ) {
@@ -6688,10 +6688,10 @@ UntiyJQ.extend( {
 			}
 
 			// If a number was passed in, add the unit (except for certain CSS properties)
-			// The isCustomProp check can be removed in UntiyJQ 4.0 when we only auto-append
+			// The isCustomProp check can be removed in $$ 4.0 when we only auto-append
 			// "px" to a few hardcoded values.
 			if ( type === "number" && !isCustomProp ) {
-				value += ret && ret[ 3 ] || ( UntiyJQ.cssNumber[ origName ] ? "" : "px" );
+				value += ret && ret[ 3 ] || ( $$.cssNumber[ origName ] ? "" : "px" );
 			}
 
 			// background-* props affect original clone's values
@@ -6737,7 +6737,7 @@ UntiyJQ.extend( {
 		}
 
 		// Try prefixed name followed by the unprefixed name
-		hooks = UntiyJQ.cssHooks[ name ] || UntiyJQ.cssHooks[ origName ];
+		hooks = $$.cssHooks[ name ] || $$.cssHooks[ origName ];
 
 		// If a hook was provided get the computed value from there
 		if ( hooks && "get" in hooks ) {
@@ -6764,14 +6764,14 @@ UntiyJQ.extend( {
 	}
 } );
 
-UntiyJQ.each( [ "height", "width" ], function( i, dimension ) {
-	UntiyJQ.cssHooks[ dimension ] = {
+$$.each( [ "height", "width" ], function( i, dimension ) {
+	$$.cssHooks[ dimension ] = {
 		get: function( elem, computed, extra ) {
 			if ( computed ) {
 
 				// Certain elements can have dimension info if we invisibly show them
 				// but it must have a current display style that would benefit
-				return rdisplayswap.test( UntiyJQ.css( elem, "display" ) ) &&
+				return rdisplayswap.test( $$.css( elem, "display" ) ) &&
 
 					// Support: Safari 8+
 					// Table columns in Safari have non-zero offsetWidth & zero
@@ -6799,7 +6799,7 @@ UntiyJQ.each( [ "height", "width" ], function( i, dimension ) {
 				// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-3991)
 				boxSizingNeeded = scrollboxSizeBuggy || extra,
 				isBorderBox = boxSizingNeeded &&
-					UntiyJQ.css( elem, "boxSizing", false, styles ) === "border-box",
+					$$.css( elem, "boxSizing", false, styles ) === "border-box",
 				subtract = extra ?
 					boxModelAdjustment(
 						elem,
@@ -6826,7 +6826,7 @@ UntiyJQ.each( [ "height", "width" ], function( i, dimension ) {
 				( matches[ 3 ] || "px" ) !== "px" ) {
 
 				elem.style[ dimension ] = value;
-				value = UntiyJQ.css( elem, dimension );
+				value = $$.css( elem, dimension );
 			}
 
 			return setPositiveNumber( elem, value, subtract );
@@ -6834,7 +6834,7 @@ UntiyJQ.each( [ "height", "width" ], function( i, dimension ) {
 	};
 } );
 
-UntiyJQ.cssHooks.marginLeft = addGetHookIf( support.reliableMarginLeft,
+$$.cssHooks.marginLeft = addGetHookIf( support.reliableMarginLeft,
 	function( elem, computed ) {
 		if ( computed ) {
 			return ( parseFloat( curCSS( elem, "marginLeft" ) ) ||
@@ -6848,12 +6848,12 @@ UntiyJQ.cssHooks.marginLeft = addGetHookIf( support.reliableMarginLeft,
 );
 
 // These hooks are used by animate to expand properties
-UntiyJQ.each( {
+$$.each( {
 	margin: "",
 	padding: "",
 	border: "Width"
 }, function( prefix, suffix ) {
-	UntiyJQ.cssHooks[ prefix + suffix ] = {
+	$$.cssHooks[ prefix + suffix ] = {
 		expand: function( value ) {
 			var i = 0,
 				expanded = {},
@@ -6871,11 +6871,11 @@ UntiyJQ.each( {
 	};
 
 	if ( prefix !== "margin" ) {
-		UntiyJQ.cssHooks[ prefix + suffix ].set = setPositiveNumber;
+		$$.cssHooks[ prefix + suffix ].set = setPositiveNumber;
 	}
 } );
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	css: function( name, value ) {
 		return access( this, function( elem, name, value ) {
 			var styles, len,
@@ -6887,15 +6887,15 @@ UntiyJQ.fn.extend( {
 				len = name.length;
 
 				for ( ; i < len; i++ ) {
-					map[ name[ i ] ] = UntiyJQ.css( elem, name[ i ], false, styles );
+					map[ name[ i ] ] = $$.css( elem, name[ i ], false, styles );
 				}
 
 				return map;
 			}
 
 			return value !== undefined ?
-				UntiyJQ.style( elem, name, value ) :
-				UntiyJQ.css( elem, name );
+				$$.style( elem, name, value ) :
+				$$.css( elem, name );
 		}, name, value, arguments.length > 1 );
 	}
 } );
@@ -6904,18 +6904,18 @@ UntiyJQ.fn.extend( {
 function Tween( elem, options, prop, end, easing ) {
 	return new Tween.prototype.init( elem, options, prop, end, easing );
 }
-UntiyJQ.Tween = Tween;
+$$.Tween = Tween;
 
 Tween.prototype = {
 	constructor: Tween,
 	init: function( elem, options, prop, end, easing, unit ) {
 		this.elem = elem;
 		this.prop = prop;
-		this.easing = easing || UntiyJQ.easing._default;
+		this.easing = easing || $$.easing._default;
 		this.options = options;
 		this.start = this.now = this.cur();
 		this.end = end;
-		this.unit = unit || ( UntiyJQ.cssNumber[ prop ] ? "" : "px" );
+		this.unit = unit || ( $$.cssNumber[ prop ] ? "" : "px" );
 	},
 	cur: function() {
 		var hooks = Tween.propHooks[ this.prop ];
@@ -6929,7 +6929,7 @@ Tween.prototype = {
 			hooks = Tween.propHooks[ this.prop ];
 
 		if ( this.options.duration ) {
-			this.pos = eased = UntiyJQ.easing[ this.easing ](
+			this.pos = eased = $$.easing[ this.easing ](
 				percent, this.options.duration * percent, 0, 1, this.options.duration
 			);
 		} else {
@@ -6968,7 +6968,7 @@ Tween.propHooks = {
 			// attempt a parseFloat and fallback to a string if the parse fails.
 			// Simple values such as "10px" are parsed to Float;
 			// complex values such as "rotate(1rad)" are returned as-is.
-			result = UntiyJQ.css( tween.elem, tween.prop, "" );
+			result = $$.css( tween.elem, tween.prop, "" );
 
 			// Empty strings, null, undefined and "auto" are converted to 0.
 			return !result || result === "auto" ? 0 : result;
@@ -6978,12 +6978,12 @@ Tween.propHooks = {
 			// Use step hook for back compat.
 			// Use cssHook if its there.
 			// Use .style if available and use plain properties where available.
-			if ( UntiyJQ.fx.step[ tween.prop ] ) {
-				UntiyJQ.fx.step[ tween.prop ]( tween );
+			if ( $$.fx.step[ tween.prop ] ) {
+				$$.fx.step[ tween.prop ]( tween );
 			} else if ( tween.elem.nodeType === 1 && (
-					UntiyJQ.cssHooks[ tween.prop ] ||
+					$$.cssHooks[ tween.prop ] ||
 					tween.elem.style[ finalPropName( tween.prop ) ] != null ) ) {
-				UntiyJQ.style( tween.elem, tween.prop, tween.now + tween.unit );
+				$$.style( tween.elem, tween.prop, tween.now + tween.unit );
 			} else {
 				tween.elem[ tween.prop ] = tween.now;
 			}
@@ -7001,7 +7001,7 @@ Tween.propHooks.scrollTop = Tween.propHooks.scrollLeft = {
 	}
 };
 
-UntiyJQ.easing = {
+$$.easing = {
 	linear: function( p ) {
 		return p;
 	},
@@ -7011,10 +7011,10 @@ UntiyJQ.easing = {
 	_default: "swing"
 };
 
-UntiyJQ.fx = Tween.prototype.init;
+$$.fx = Tween.prototype.init;
 
 // Back compat <1.8 extension point
-UntiyJQ.fx.step = {};
+$$.fx.step = {};
 
 
 
@@ -7029,10 +7029,10 @@ function schedule() {
 		if ( document.hidden === false && window.requestAnimationFrame ) {
 			window.requestAnimationFrame( schedule );
 		} else {
-			window.setTimeout( schedule, UntiyJQ.fx.interval );
+			window.setTimeout( schedule, $$.fx.interval );
 		}
 
-		UntiyJQ.fx.tick();
+		$$.fx.tick();
 	}
 }
 
@@ -7090,7 +7090,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 	// Queue-skipping animations hijack the fx hooks
 	if ( !opts.queue ) {
-		hooks = UntiyJQ._queueHooks( elem, "fx" );
+		hooks = $$._queueHooks( elem, "fx" );
 		if ( hooks.unqueued == null ) {
 			hooks.unqueued = 0;
 			oldfire = hooks.empty.fire;
@@ -7107,7 +7107,7 @@ function defaultPrefilter( elem, props, opts ) {
 			// Ensure the complete handler is called before this completes
 			anim.always( function() {
 				hooks.unqueued--;
-				if ( !UntiyJQ.queue( elem, "fx" ).length ) {
+				if ( !$$.queue( elem, "fx" ).length ) {
 					hooks.empty.fire();
 				}
 			} );
@@ -7132,13 +7132,13 @@ function defaultPrefilter( elem, props, opts ) {
 					continue;
 				}
 			}
-			orig[ prop ] = dataShow && dataShow[ prop ] || UntiyJQ.style( elem, prop );
+			orig[ prop ] = dataShow && dataShow[ prop ] || $$.style( elem, prop );
 		}
 	}
 
 	// Bail out if this is a no-op like .hide().hide()
-	propTween = !UntiyJQ.isEmptyObject( props );
-	if ( !propTween && UntiyJQ.isEmptyObject( orig ) ) {
+	propTween = !$$.isEmptyObject( props );
+	if ( !propTween && $$.isEmptyObject( orig ) ) {
 		return;
 	}
 
@@ -7156,7 +7156,7 @@ function defaultPrefilter( elem, props, opts ) {
 		if ( restoreDisplay == null ) {
 			restoreDisplay = dataPriv.get( elem, "display" );
 		}
-		display = UntiyJQ.css( elem, "display" );
+		display = $$.css( elem, "display" );
 		if ( display === "none" ) {
 			if ( restoreDisplay ) {
 				display = restoreDisplay;
@@ -7165,14 +7165,14 @@ function defaultPrefilter( elem, props, opts ) {
 				// Get nonempty value(s) by temporarily forcing visibility
 				showHide( [ elem ], true );
 				restoreDisplay = elem.style.display || restoreDisplay;
-				display = UntiyJQ.css( elem, "display" );
+				display = $$.css( elem, "display" );
 				showHide( [ elem ] );
 			}
 		}
 
 		// Animate inline elements as inline-block
 		if ( display === "inline" || display === "inline-block" && restoreDisplay != null ) {
-			if ( UntiyJQ.css( elem, "float" ) === "none" ) {
+			if ( $$.css( elem, "float" ) === "none" ) {
 
 				// Restore the original display value at the end of pure show/hide animations
 				if ( !propTween ) {
@@ -7234,7 +7234,7 @@ function defaultPrefilter( elem, props, opts ) {
 				}
 				dataPriv.remove( elem, "fxshow" );
 				for ( prop in orig ) {
-					UntiyJQ.style( elem, prop, orig[ prop ] );
+					$$.style( elem, prop, orig[ prop ] );
 				}
 			} );
 		}
@@ -7269,7 +7269,7 @@ function propFilter( props, specialEasing ) {
 			delete props[ index ];
 		}
 
-		hooks = UntiyJQ.cssHooks[ name ];
+		hooks = $$.cssHooks[ name ];
 		if ( hooks && "expand" in hooks ) {
 			value = hooks.expand( value );
 			delete props[ name ];
@@ -7293,7 +7293,7 @@ function Animation( elem, properties, options ) {
 		stopped,
 		index = 0,
 		length = Animation.prefilters.length,
-		deferred = UntiyJQ.Deferred().always( function() {
+		deferred = $$.Deferred().always( function() {
 
 			// Don't match elem in the :animated selector
 			delete tick.elem;
@@ -7334,10 +7334,10 @@ function Animation( elem, properties, options ) {
 		},
 		animation = deferred.promise( {
 			elem: elem,
-			props: UntiyJQ.extend( {}, properties ),
-			opts: UntiyJQ.extend( true, {
+			props: $$.extend( {}, properties ),
+			opts: $$.extend( true, {
 				specialEasing: {},
-				easing: UntiyJQ.easing._default
+				easing: $$.easing._default
 			}, options ),
 			originalProperties: properties,
 			originalOptions: options,
@@ -7345,7 +7345,7 @@ function Animation( elem, properties, options ) {
 			duration: options.duration,
 			tweens: [],
 			createTween: function( prop, end ) {
-				var tween = UntiyJQ.Tween( elem, animation.opts, prop, end,
+				var tween = $$.Tween( elem, animation.opts, prop, end,
 						animation.opts.specialEasing[ prop ] || animation.opts.easing );
 				animation.tweens.push( tween );
 				return tween;
@@ -7382,14 +7382,14 @@ function Animation( elem, properties, options ) {
 		result = Animation.prefilters[ index ].call( animation, elem, props, animation.opts );
 		if ( result ) {
 			if ( isFunction( result.stop ) ) {
-				UntiyJQ._queueHooks( animation.elem, animation.opts.queue ).stop =
+				$$._queueHooks( animation.elem, animation.opts.queue ).stop =
 					result.stop.bind( result );
 			}
 			return result;
 		}
 	}
 
-	UntiyJQ.map( props, createTween, animation );
+	$$.map( props, createTween, animation );
 
 	if ( isFunction( animation.opts.start ) ) {
 		animation.opts.start.call( elem, animation );
@@ -7402,8 +7402,8 @@ function Animation( elem, properties, options ) {
 		.fail( animation.opts.fail )
 		.always( animation.opts.always );
 
-	UntiyJQ.fx.timer(
-		UntiyJQ.extend( tick, {
+	$$.fx.timer(
+		$$.extend( tick, {
 			elem: elem,
 			anim: animation,
 			queue: animation.opts.queue
@@ -7413,7 +7413,7 @@ function Animation( elem, properties, options ) {
 	return animation;
 }
 
-UntiyJQ.Animation = UntiyJQ.extend( Animation, {
+$$.Animation = $$.extend( Animation, {
 
 	tweeners: {
 		"*": [ function( prop, value ) {
@@ -7453,8 +7453,8 @@ UntiyJQ.Animation = UntiyJQ.extend( Animation, {
 	}
 } );
 
-UntiyJQ.speed = function( speed, easing, fn ) {
-	var opt = speed && typeof speed === "object" ? UntiyJQ.extend( {}, speed ) : {
+$$.speed = function( speed, easing, fn ) {
+	var opt = speed && typeof speed === "object" ? $$.extend( {}, speed ) : {
 		complete: fn || !fn && easing ||
 			isFunction( speed ) && speed,
 		duration: speed,
@@ -7462,16 +7462,16 @@ UntiyJQ.speed = function( speed, easing, fn ) {
 	};
 
 	// Go to the end state if fx are off
-	if ( UntiyJQ.fx.off ) {
+	if ( $$.fx.off ) {
 		opt.duration = 0;
 
 	} else {
 		if ( typeof opt.duration !== "number" ) {
-			if ( opt.duration in UntiyJQ.fx.speeds ) {
-				opt.duration = UntiyJQ.fx.speeds[ opt.duration ];
+			if ( opt.duration in $$.fx.speeds ) {
+				opt.duration = $$.fx.speeds[ opt.duration ];
 
 			} else {
-				opt.duration = UntiyJQ.fx.speeds._default;
+				opt.duration = $$.fx.speeds._default;
 			}
 		}
 	}
@@ -7490,14 +7490,14 @@ UntiyJQ.speed = function( speed, easing, fn ) {
 		}
 
 		if ( opt.queue ) {
-			UntiyJQ.dequeue( this, opt.queue );
+			$$.dequeue( this, opt.queue );
 		}
 	};
 
 	return opt;
 };
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	fadeTo: function( speed, to, easing, callback ) {
 
 		// Show any hidden elements after setting opacity to 0
@@ -7507,12 +7507,12 @@ UntiyJQ.fn.extend( {
 			.end().animate( { opacity: to }, speed, easing, callback );
 	},
 	animate: function( prop, speed, easing, callback ) {
-		var empty = UntiyJQ.isEmptyObject( prop ),
-			optall = UntiyJQ.speed( speed, easing, callback ),
+		var empty = $$.isEmptyObject( prop ),
+			optall = $$.speed( speed, easing, callback ),
 			doAnimation = function() {
 
 				// Operate on a copy of prop so per-property easing won't be lost
-				var anim = Animation( this, UntiyJQ.extend( {}, prop ), optall );
+				var anim = Animation( this, $$.extend( {}, prop ), optall );
 
 				// Empty animations, or finishing resolves immediately
 				if ( empty || dataPriv.get( this, "finish" ) ) {
@@ -7544,7 +7544,7 @@ UntiyJQ.fn.extend( {
 		return this.each( function() {
 			var dequeue = true,
 				index = type != null && type + "queueHooks",
-				timers = UntiyJQ.timers,
+				timers = $$.timers,
 				data = dataPriv.get( this );
 
 			if ( index ) {
@@ -7573,7 +7573,7 @@ UntiyJQ.fn.extend( {
 			// Timers currently will call their complete callbacks, which
 			// will dequeue but only if they were gotoEnd.
 			if ( dequeue || !gotoEnd ) {
-				UntiyJQ.dequeue( this, type );
+				$$.dequeue( this, type );
 			}
 		} );
 	},
@@ -7586,14 +7586,14 @@ UntiyJQ.fn.extend( {
 				data = dataPriv.get( this ),
 				queue = data[ type + "queue" ],
 				hooks = data[ type + "queueHooks" ],
-				timers = UntiyJQ.timers,
+				timers = $$.timers,
 				length = queue ? queue.length : 0;
 
 			// Enable finishing flag on private data
 			data.finish = true;
 
 			// Empty the queue first
-			UntiyJQ.queue( this, type, [] );
+			$$.queue( this, type, [] );
 
 			if ( hooks && hooks.stop ) {
 				hooks.stop.call( this, true );
@@ -7620,9 +7620,9 @@ UntiyJQ.fn.extend( {
 	}
 } );
 
-UntiyJQ.each( [ "toggle", "show", "hide" ], function( i, name ) {
-	var cssFn = UntiyJQ.fn[ name ];
-	UntiyJQ.fn[ name ] = function( speed, easing, callback ) {
+$$.each( [ "toggle", "show", "hide" ], function( i, name ) {
+	var cssFn = $$.fn[ name ];
+	$$.fn[ name ] = function( speed, easing, callback ) {
 		return speed == null || typeof speed === "boolean" ?
 			cssFn.apply( this, arguments ) :
 			this.animate( genFx( name, true ), speed, easing, callback );
@@ -7630,7 +7630,7 @@ UntiyJQ.each( [ "toggle", "show", "hide" ], function( i, name ) {
 } );
 
 // Generate shortcuts for custom animations
-UntiyJQ.each( {
+$$.each( {
 	slideDown: genFx( "show" ),
 	slideUp: genFx( "hide" ),
 	slideToggle: genFx( "toggle" ),
@@ -7638,16 +7638,16 @@ UntiyJQ.each( {
 	fadeOut: { opacity: "hide" },
 	fadeToggle: { opacity: "toggle" }
 }, function( name, props ) {
-	UntiyJQ.fn[ name ] = function( speed, easing, callback ) {
+	$$.fn[ name ] = function( speed, easing, callback ) {
 		return this.animate( props, speed, easing, callback );
 	};
 } );
 
-UntiyJQ.timers = [];
-UntiyJQ.fx.tick = function() {
+$$.timers = [];
+$$.fx.tick = function() {
 	var timer,
 		i = 0,
-		timers = UntiyJQ.timers;
+		timers = $$.timers;
 
 	fxNow = Date.now();
 
@@ -7661,18 +7661,18 @@ UntiyJQ.fx.tick = function() {
 	}
 
 	if ( !timers.length ) {
-		UntiyJQ.fx.stop();
+		$$.fx.stop();
 	}
 	fxNow = undefined;
 };
 
-UntiyJQ.fx.timer = function( timer ) {
-	UntiyJQ.timers.push( timer );
-	UntiyJQ.fx.start();
+$$.fx.timer = function( timer ) {
+	$$.timers.push( timer );
+	$$.fx.start();
 };
 
-UntiyJQ.fx.interval = 13;
-UntiyJQ.fx.start = function() {
+$$.fx.interval = 13;
+$$.fx.start = function() {
 	if ( inProgress ) {
 		return;
 	}
@@ -7681,11 +7681,11 @@ UntiyJQ.fx.start = function() {
 	schedule();
 };
 
-UntiyJQ.fx.stop = function() {
+$$.fx.stop = function() {
 	inProgress = null;
 };
 
-UntiyJQ.fx.speeds = {
+$$.fx.speeds = {
 	slow: 600,
 	fast: 200,
 
@@ -7695,9 +7695,9 @@ UntiyJQ.fx.speeds = {
 
 
 // Based off of the plugin by Clint Helfers, with permission.
-// https://web.archive.org/web/20100324014747/http://blindsignals.com/index.php/2009/07/UntiyJQ-delay/
-UntiyJQ.fn.delay = function( time, type ) {
-	time = UntiyJQ.fx ? UntiyJQ.fx.speeds[ time ] || time : time;
+// https://web.archive.org/web/20100324014747/http://blindsignals.com/index.php/2009/07/$$-delay/
+$$.fn.delay = function( time, type ) {
+	time = $$.fx ? $$.fx.speeds[ time ] || time : time;
 	type = type || "fx";
 
 	return this.queue( type, function( next, hooks ) {
@@ -7734,21 +7734,21 @@ UntiyJQ.fn.delay = function( time, type ) {
 
 
 var boolHook,
-	attrHandle = UntiyJQ.expr.attrHandle;
+	attrHandle = $$.expr.attrHandle;
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	attr: function( name, value ) {
-		return access( this, UntiyJQ.attr, name, value, arguments.length > 1 );
+		return access( this, $$.attr, name, value, arguments.length > 1 );
 	},
 
 	removeAttr: function( name ) {
 		return this.each( function() {
-			UntiyJQ.removeAttr( this, name );
+			$$.removeAttr( this, name );
 		} );
 	}
 } );
 
-UntiyJQ.extend( {
+$$.extend( {
 	attr: function( elem, name, value ) {
 		var ret, hooks,
 			nType = elem.nodeType;
@@ -7760,19 +7760,19 @@ UntiyJQ.extend( {
 
 		// Fallback to prop when attributes are not supported
 		if ( typeof elem.getAttribute === "undefined" ) {
-			return UntiyJQ.prop( elem, name, value );
+			return $$.prop( elem, name, value );
 		}
 
 		// Attribute hooks are determined by the lowercase version
 		// Grab necessary hook if one is defined
-		if ( nType !== 1 || !UntiyJQ.isXMLDoc( elem ) ) {
-			hooks = UntiyJQ.attrHooks[ name.toLowerCase() ] ||
-				( UntiyJQ.expr.match.bool.test( name ) ? boolHook : undefined );
+		if ( nType !== 1 || !$$.isXMLDoc( elem ) ) {
+			hooks = $$.attrHooks[ name.toLowerCase() ] ||
+				( $$.expr.match.bool.test( name ) ? boolHook : undefined );
 		}
 
 		if ( value !== undefined ) {
 			if ( value === null ) {
-				UntiyJQ.removeAttr( elem, name );
+				$$.removeAttr( elem, name );
 				return;
 			}
 
@@ -7789,7 +7789,7 @@ UntiyJQ.extend( {
 			return ret;
 		}
 
-		ret = UntiyJQ.find.attr( elem, name );
+		ret = $$.find.attr( elem, name );
 
 		// Non-existent attributes return null, we normalize to undefined
 		return ret == null ? undefined : ret;
@@ -7833,7 +7833,7 @@ boolHook = {
 		if ( value === false ) {
 
 			// Remove boolean attributes when set to false
-			UntiyJQ.removeAttr( elem, name );
+			$$.removeAttr( elem, name );
 		} else {
 			elem.setAttribute( name, name );
 		}
@@ -7841,8 +7841,8 @@ boolHook = {
 	}
 };
 
-UntiyJQ.each( UntiyJQ.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
-	var getter = attrHandle[ name ] || UntiyJQ.find.attr;
+$$.each( $$.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
+	var getter = attrHandle[ name ] || $$.find.attr;
 
 	attrHandle[ name ] = function( elem, name, isXML ) {
 		var ret, handle,
@@ -7868,19 +7868,19 @@ UntiyJQ.each( UntiyJQ.expr.match.bool.source.match( /\w+/g ), function( i, name 
 var rfocusable = /^(?:input|select|textarea|button)$/i,
 	rclickable = /^(?:a|area)$/i;
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	prop: function( name, value ) {
-		return access( this, UntiyJQ.prop, name, value, arguments.length > 1 );
+		return access( this, $$.prop, name, value, arguments.length > 1 );
 	},
 
 	removeProp: function( name ) {
 		return this.each( function() {
-			delete this[ UntiyJQ.propFix[ name ] || name ];
+			delete this[ $$.propFix[ name ] || name ];
 		} );
 	}
 } );
 
-UntiyJQ.extend( {
+$$.extend( {
 	prop: function( elem, name, value ) {
 		var ret, hooks,
 			nType = elem.nodeType;
@@ -7890,11 +7890,11 @@ UntiyJQ.extend( {
 			return;
 		}
 
-		if ( nType !== 1 || !UntiyJQ.isXMLDoc( elem ) ) {
+		if ( nType !== 1 || !$$.isXMLDoc( elem ) ) {
 
 			// Fix name and attach hooks
-			name = UntiyJQ.propFix[ name ] || name;
-			hooks = UntiyJQ.propHooks[ name ];
+			name = $$.propFix[ name ] || name;
+			hooks = $$.propHooks[ name ];
 		}
 
 		if ( value !== undefined ) {
@@ -7922,7 +7922,7 @@ UntiyJQ.extend( {
 				// correct value when it hasn't been explicitly set
 				// https://web.archive.org/web/20141116233347/http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
 				// Use proper attribute retrieval(#12072)
-				var tabindex = UntiyJQ.find.attr( elem, "tabindex" );
+				var tabindex = $$.find.attr( elem, "tabindex" );
 
 				if ( tabindex ) {
 					return parseInt( tabindex, 10 );
@@ -7956,7 +7956,7 @@ UntiyJQ.extend( {
 // eslint rule "no-unused-expressions" is disabled for this code
 // since it considers such accessions noop
 if ( !support.optSelected ) {
-	UntiyJQ.propHooks.selected = {
+	$$.propHooks.selected = {
 		get: function( elem ) {
 
 			/* eslint no-unused-expressions: "off" */
@@ -7983,7 +7983,7 @@ if ( !support.optSelected ) {
 	};
 }
 
-UntiyJQ.each( [
+$$.each( [
 	"tabIndex",
 	"readOnly",
 	"maxLength",
@@ -7995,7 +7995,7 @@ UntiyJQ.each( [
 	"frameBorder",
 	"contentEditable"
 ], function() {
-	UntiyJQ.propFix[ this.toLowerCase() ] = this;
+	$$.propFix[ this.toLowerCase() ] = this;
 } );
 
 
@@ -8023,14 +8023,14 @@ function classesToArray( value ) {
 	return [];
 }
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	addClass: function( value ) {
 		var classes, elem, cur, curValue, clazz, j, finalValue,
 			i = 0;
 
 		if ( isFunction( value ) ) {
 			return this.each( function( j ) {
-				UntiyJQ( this ).addClass( value.call( this, j, getClass( this ) ) );
+				$$( this ).addClass( value.call( this, j, getClass( this ) ) );
 			} );
 		}
 
@@ -8067,7 +8067,7 @@ UntiyJQ.fn.extend( {
 
 		if ( isFunction( value ) ) {
 			return this.each( function( j ) {
-				UntiyJQ( this ).removeClass( value.call( this, j, getClass( this ) ) );
+				$$( this ).removeClass( value.call( this, j, getClass( this ) ) );
 			} );
 		}
 
@@ -8116,7 +8116,7 @@ UntiyJQ.fn.extend( {
 
 		if ( isFunction( value ) ) {
 			return this.each( function( i ) {
-				UntiyJQ( this ).toggleClass(
+				$$( this ).toggleClass(
 					value.call( this, i, getClass( this ), stateVal ),
 					stateVal
 				);
@@ -8130,7 +8130,7 @@ UntiyJQ.fn.extend( {
 
 				// Toggle individual class names
 				i = 0;
-				self = UntiyJQ( this );
+				self = $$( this );
 				classNames = classesToArray( value );
 
 				while ( ( className = classNames[ i++ ] ) ) {
@@ -8188,15 +8188,15 @@ UntiyJQ.fn.extend( {
 
 var rreturn = /\r/g;
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	val: function( value ) {
 		var hooks, ret, valueIsFunction,
 			elem = this[ 0 ];
 
 		if ( !arguments.length ) {
 			if ( elem ) {
-				hooks = UntiyJQ.valHooks[ elem.type ] ||
-					UntiyJQ.valHooks[ elem.nodeName.toLowerCase() ];
+				hooks = $$.valHooks[ elem.type ] ||
+					$$.valHooks[ elem.nodeName.toLowerCase() ];
 
 				if ( hooks &&
 					"get" in hooks &&
@@ -8229,7 +8229,7 @@ UntiyJQ.fn.extend( {
 			}
 
 			if ( valueIsFunction ) {
-				val = value.call( this, i, UntiyJQ( this ).val() );
+				val = value.call( this, i, $$( this ).val() );
 			} else {
 				val = value;
 			}
@@ -8242,12 +8242,12 @@ UntiyJQ.fn.extend( {
 				val += "";
 
 			} else if ( Array.isArray( val ) ) {
-				val = UntiyJQ.map( val, function( value ) {
+				val = $$.map( val, function( value ) {
 					return value == null ? "" : value + "";
 				} );
 			}
 
-			hooks = UntiyJQ.valHooks[ this.type ] || UntiyJQ.valHooks[ this.nodeName.toLowerCase() ];
+			hooks = $$.valHooks[ this.type ] || $$.valHooks[ this.nodeName.toLowerCase() ];
 
 			// If set returns undefined, fall back to normal setting
 			if ( !hooks || !( "set" in hooks ) || hooks.set( this, val, "value" ) === undefined ) {
@@ -8257,12 +8257,12 @@ UntiyJQ.fn.extend( {
 	}
 } );
 
-UntiyJQ.extend( {
+$$.extend( {
 	valHooks: {
 		option: {
 			get: function( elem ) {
 
-				var val = UntiyJQ.find.attr( elem, "value" );
+				var val = $$.find.attr( elem, "value" );
 				return val != null ?
 					val :
 
@@ -8270,7 +8270,7 @@ UntiyJQ.extend( {
 					// option.text throws exceptions (#14686, #14858)
 					// Strip and collapse whitespace
 					// https://html.spec.whatwg.org/#strip-and-collapse-whitespace
-					stripAndCollapse( UntiyJQ.text( elem ) );
+					stripAndCollapse( $$.text( elem ) );
 			}
 		},
 		select: {
@@ -8303,7 +8303,7 @@ UntiyJQ.extend( {
 								!nodeName( option.parentNode, "optgroup" ) ) ) {
 
 						// Get the specific value for the option
-						value = UntiyJQ( option ).val();
+						value = $$( option ).val();
 
 						// We don't need an array for one selects
 						if ( one ) {
@@ -8321,7 +8321,7 @@ UntiyJQ.extend( {
 			set: function( elem, value ) {
 				var optionSet, option,
 					options = elem.options,
-					values = UntiyJQ.makeArray( value ),
+					values = $$.makeArray( value ),
 					i = options.length;
 
 				while ( i-- ) {
@@ -8330,7 +8330,7 @@ UntiyJQ.extend( {
 					/* eslint-disable no-cond-assign */
 
 					if ( option.selected =
-						UntiyJQ.inArray( UntiyJQ.valHooks.option.get( option ), values ) > -1
+						$$.inArray( $$.valHooks.option.get( option ), values ) > -1
 					) {
 						optionSet = true;
 					}
@@ -8349,16 +8349,16 @@ UntiyJQ.extend( {
 } );
 
 // Radios and checkboxes getter/setter
-UntiyJQ.each( [ "radio", "checkbox" ], function() {
-	UntiyJQ.valHooks[ this ] = {
+$$.each( [ "radio", "checkbox" ], function() {
+	$$.valHooks[ this ] = {
 		set: function( elem, value ) {
 			if ( Array.isArray( value ) ) {
-				return ( elem.checked = UntiyJQ.inArray( UntiyJQ( elem ).val(), value ) > -1 );
+				return ( elem.checked = $$.inArray( $$( elem ).val(), value ) > -1 );
 			}
 		}
 	};
 	if ( !support.checkOn ) {
-		UntiyJQ.valHooks[ this ].get = function( elem ) {
+		$$.valHooks[ this ].get = function( elem ) {
 			return elem.getAttribute( "value" ) === null ? "on" : elem.value;
 		};
 	}
@@ -8367,7 +8367,7 @@ UntiyJQ.each( [ "radio", "checkbox" ], function() {
 
 
 
-// Return UntiyJQ for attributes-only inclusion
+// Return $$ for attributes-only inclusion
 
 
 support.focusin = "onfocusin" in window;
@@ -8378,7 +8378,7 @@ var rfocusMorph = /^(?:focusinfocus|focusoutblur)$/,
 		e.stopPropagation();
 	};
 
-UntiyJQ.extend( UntiyJQ.event, {
+$$.extend( $$.event, {
 
 	trigger: function( event, data, elem, onlyHandlers ) {
 
@@ -8395,7 +8395,7 @@ UntiyJQ.extend( UntiyJQ.event, {
 		}
 
 		// focus/blur morphs to focusin/out; ensure we're not firing them right now
-		if ( rfocusMorph.test( type + UntiyJQ.event.triggered ) ) {
+		if ( rfocusMorph.test( type + $$.event.triggered ) ) {
 			return;
 		}
 
@@ -8408,12 +8408,12 @@ UntiyJQ.extend( UntiyJQ.event, {
 		}
 		ontype = type.indexOf( ":" ) < 0 && "on" + type;
 
-		// Caller can pass in a UntiyJQ.Event object, Object, or just an event type string
-		event = event[ UntiyJQ.expando ] ?
+		// Caller can pass in a $$.Event object, Object, or just an event type string
+		event = event[ $$.expando ] ?
 			event :
-			new UntiyJQ.Event( type, typeof event === "object" && event );
+			new $$.Event( type, typeof event === "object" && event );
 
-		// Trigger bitmask: & 1 for native handlers; & 2 for UntiyJQ (always true)
+		// Trigger bitmask: & 1 for native handlers; & 2 for $$ (always true)
 		event.isTrigger = onlyHandlers ? 2 : 3;
 		event.namespace = namespaces.join( "." );
 		event.rnamespace = event.namespace ?
@@ -8429,10 +8429,10 @@ UntiyJQ.extend( UntiyJQ.event, {
 		// Clone any incoming data and prepend the event, creating the handler arg list
 		data = data == null ?
 			[ event ] :
-			UntiyJQ.makeArray( data, [ event ] );
+			$$.makeArray( data, [ event ] );
 
 		// Allow special events to draw outside the lines
-		special = UntiyJQ.event.special[ type ] || {};
+		special = $$.event.special[ type ] || {};
 		if ( !onlyHandlers && special.trigger && special.trigger.apply( elem, data ) === false ) {
 			return;
 		}
@@ -8464,7 +8464,7 @@ UntiyJQ.extend( UntiyJQ.event, {
 				bubbleType :
 				special.bindType || type;
 
-			// UntiyJQ handler
+			// $$ handler
 			handle = ( dataPriv.get( cur, "events" ) || {} )[ event.type ] &&
 				dataPriv.get( cur, "handle" );
 			if ( handle ) {
@@ -8501,7 +8501,7 @@ UntiyJQ.extend( UntiyJQ.event, {
 					}
 
 					// Prevent re-triggering of the same event, since we already bubbled it above
-					UntiyJQ.event.triggered = type;
+					$$.event.triggered = type;
 
 					if ( event.isPropagationStopped() ) {
 						lastElement.addEventListener( type, stopPropagationCallback );
@@ -8513,7 +8513,7 @@ UntiyJQ.extend( UntiyJQ.event, {
 						lastElement.removeEventListener( type, stopPropagationCallback );
 					}
 
-					UntiyJQ.event.triggered = undefined;
+					$$.event.triggered = undefined;
 
 					if ( tmp ) {
 						elem[ ontype ] = tmp;
@@ -8528,8 +8528,8 @@ UntiyJQ.extend( UntiyJQ.event, {
 	// Piggyback on a donor event to simulate a different one
 	// Used only for `focus(in | out)` events
 	simulate: function( type, elem, event ) {
-		var e = UntiyJQ.extend(
-			new UntiyJQ.Event(),
+		var e = $$.extend(
+			new $$.Event(),
 			event,
 			{
 				type: type,
@@ -8537,22 +8537,22 @@ UntiyJQ.extend( UntiyJQ.event, {
 			}
 		);
 
-		UntiyJQ.event.trigger( e, null, elem );
+		$$.event.trigger( e, null, elem );
 	}
 
 } );
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 
 	trigger: function( type, data ) {
 		return this.each( function() {
-			UntiyJQ.event.trigger( type, data, this );
+			$$.event.trigger( type, data, this );
 		} );
 	},
 	triggerHandler: function( type, data ) {
 		var elem = this[ 0 ];
 		if ( elem ) {
-			return UntiyJQ.event.trigger( type, data, elem, true );
+			return $$.event.trigger( type, data, elem, true );
 		}
 	}
 } );
@@ -8567,14 +8567,14 @@ UntiyJQ.fn.extend( {
 // which is spec violation - http://www.w3.org/TR/DOM-Level-3-Events/#events-focusevent-event-order
 // Related ticket - https://bugs.chromium.org/p/chromium/issues/detail?id=449857
 if ( !support.focusin ) {
-	UntiyJQ.each( { focus: "focusin", blur: "focusout" }, function( orig, fix ) {
+	$$.each( { focus: "focusin", blur: "focusout" }, function( orig, fix ) {
 
 		// Attach a single capturing handler on the document while someone wants focusin/focusout
 		var handler = function( event ) {
-			UntiyJQ.event.simulate( fix, event.target, UntiyJQ.event.fix( event ) );
+			$$.event.simulate( fix, event.target, $$.event.fix( event ) );
 		};
 
-		UntiyJQ.event.special[ fix ] = {
+		$$.event.special[ fix ] = {
 			setup: function() {
 				var doc = this.ownerDocument || this,
 					attaches = dataPriv.access( doc, fix );
@@ -8608,7 +8608,7 @@ var rquery = ( /\?/ );
 
 
 // Cross-browser xml parsing
-UntiyJQ.parseXML = function( data ) {
+$$.parseXML = function( data ) {
 	var xml;
 	if ( !data || typeof data !== "string" ) {
 		return null;
@@ -8623,7 +8623,7 @@ UntiyJQ.parseXML = function( data ) {
 	}
 
 	if ( !xml || xml.getElementsByTagName( "parsererror" ).length ) {
-		UntiyJQ.error( "Invalid XML: " + data );
+		$$.error( "Invalid XML: " + data );
 	}
 	return xml;
 };
@@ -8641,7 +8641,7 @@ function buildParams( prefix, obj, traditional, add ) {
 	if ( Array.isArray( obj ) ) {
 
 		// Serialize array item.
-		UntiyJQ.each( obj, function( i, v ) {
+		$$.each( obj, function( i, v ) {
 			if ( traditional || rbracket.test( prefix ) ) {
 
 				// Treat each array item as a scalar.
@@ -8675,7 +8675,7 @@ function buildParams( prefix, obj, traditional, add ) {
 
 // Serialize an array of form elements or a set of
 // key/values into a query string
-UntiyJQ.param = function( a, traditional ) {
+$$.param = function( a, traditional ) {
 	var prefix,
 		s = [],
 		add = function( key, valueOrFunction ) {
@@ -8694,10 +8694,10 @@ UntiyJQ.param = function( a, traditional ) {
 	}
 
 	// If an array was passed in, assume that it is an array of form elements.
-	if ( Array.isArray( a ) || ( a.UntiyJQ && !UntiyJQ.isPlainObject( a ) ) ) {
+	if ( Array.isArray( a ) || ( a.$$ && !$$.isPlainObject( a ) ) ) {
 
 		// Serialize the form elements
-		UntiyJQ.each( a, function() {
+		$$.each( a, function() {
 			add( this.name, this.value );
 		} );
 
@@ -8714,34 +8714,34 @@ UntiyJQ.param = function( a, traditional ) {
 	return s.join( "&" );
 };
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	serialize: function() {
-		return UntiyJQ.param( this.serializeArray() );
+		return $$.param( this.serializeArray() );
 	},
 	serializeArray: function() {
 		return this.map( function() {
 
 			// Can add propHook for "elements" to filter or add form elements
-			var elements = UntiyJQ.prop( this, "elements" );
-			return elements ? UntiyJQ.makeArray( elements ) : this;
+			var elements = $$.prop( this, "elements" );
+			return elements ? $$.makeArray( elements ) : this;
 		} )
 		.filter( function() {
 			var type = this.type;
 
 			// Use .is( ":disabled" ) so that fieldset[disabled] works
-			return this.name && !UntiyJQ( this ).is( ":disabled" ) &&
+			return this.name && !$$( this ).is( ":disabled" ) &&
 				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
 				( this.checked || !rcheckableType.test( type ) );
 		} )
 		.map( function( i, elem ) {
-			var val = UntiyJQ( this ).val();
+			var val = $$( this ).val();
 
 			if ( val == null ) {
 				return null;
 			}
 
 			if ( Array.isArray( val ) ) {
-				return UntiyJQ.map( val, function( val ) {
+				return $$.map( val, function( val ) {
 					return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
 				} );
 			}
@@ -8788,7 +8788,7 @@ var
 	originAnchor = document.createElement( "a" );
 	originAnchor.href = location.href;
 
-// Base "constructor" for UntiyJQ.ajaxPrefilter and UntiyJQ.ajaxTransport
+// Base "constructor" for $$.ajaxPrefilter and $$.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
 
 	// dataTypeExpression is optional and defaults to "*"
@@ -8831,7 +8831,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 	function inspect( dataType ) {
 		var selected;
 		inspected[ dataType ] = true;
-		UntiyJQ.each( structure[ dataType ] || [], function( _, prefilterOrFactory ) {
+		$$.each( structure[ dataType ] || [], function( _, prefilterOrFactory ) {
 			var dataTypeOrTransport = prefilterOrFactory( options, originalOptions, jqXHR );
 			if ( typeof dataTypeOrTransport === "string" &&
 				!seekingTransport && !inspected[ dataTypeOrTransport ] ) {
@@ -8854,7 +8854,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 // Fixes #9887
 function ajaxExtend( target, src ) {
 	var key, deep,
-		flatOptions = UntiyJQ.ajaxSettings.flatOptions || {};
+		flatOptions = $$.ajaxSettings.flatOptions || {};
 
 	for ( key in src ) {
 		if ( src[ key ] !== undefined ) {
@@ -8862,7 +8862,7 @@ function ajaxExtend( target, src ) {
 		}
 	}
 	if ( deep ) {
-		UntiyJQ.extend( true, target, deep );
+		$$.extend( true, target, deep );
 	}
 
 	return target;
@@ -9026,7 +9026,7 @@ function ajaxConvert( s, response, jqXHR, isSuccess ) {
 	return { state: "success", data: response };
 }
 
-UntiyJQ.extend( {
+$$.extend( {
 
 	// Counter for holding the number of active queries
 	active: 0,
@@ -9090,7 +9090,7 @@ UntiyJQ.extend( {
 			"text json": JSON.parse,
 
 			// Parse text as xml
-			"text xml": UntiyJQ.parseXML
+			"text xml": $$.parseXML
 		},
 
 		// For options that shouldn't be deep extended:
@@ -9110,10 +9110,10 @@ UntiyJQ.extend( {
 		return settings ?
 
 			// Building a settings object
-			ajaxExtend( ajaxExtend( target, UntiyJQ.ajaxSettings ), settings ) :
+			ajaxExtend( ajaxExtend( target, $$.ajaxSettings ), settings ) :
 
 			// Extending ajaxSettings
-			ajaxExtend( UntiyJQ.ajaxSettings, target );
+			ajaxExtend( $$.ajaxSettings, target );
 	},
 
 	ajaxPrefilter: addToPrefiltersOrTransports( prefilters ),
@@ -9159,20 +9159,20 @@ UntiyJQ.extend( {
 			uncached,
 
 			// Create the final options object
-			s = UntiyJQ.ajaxSetup( {}, options ),
+			s = $$.ajaxSetup( {}, options ),
 
 			// Callbacks context
 			callbackContext = s.context || s,
 
-			// Context for global events is callbackContext if it is a DOM node or UntiyJQ collection
+			// Context for global events is callbackContext if it is a DOM node or $$ collection
 			globalEventContext = s.context &&
-				( callbackContext.nodeType || callbackContext.UntiyJQ ) ?
-					UntiyJQ( callbackContext ) :
-					UntiyJQ.event,
+				( callbackContext.nodeType || callbackContext.$$ ) ?
+					$$( callbackContext ) :
+					$$.event,
 
 			// Deferreds
-			deferred = UntiyJQ.Deferred(),
-			completeDeferred = UntiyJQ.Callbacks( "once memory" ),
+			deferred = $$.Deferred(),
+			completeDeferred = $$.Callbacks( "once memory" ),
 
 			// Status-dependent callbacks
 			statusCode = s.statusCode || {},
@@ -9298,7 +9298,7 @@ UntiyJQ.extend( {
 
 		// Convert data if not already a string
 		if ( s.data && s.processData && typeof s.data !== "string" ) {
-			s.data = UntiyJQ.param( s.data, s.traditional );
+			s.data = $$.param( s.data, s.traditional );
 		}
 
 		// Apply prefilters
@@ -9310,12 +9310,12 @@ UntiyJQ.extend( {
 		}
 
 		// We can fire global events as of now if asked to
-		// Don't fire events if UntiyJQ.event is undefined in an AMD-usage scenario (#15118)
-		fireGlobals = UntiyJQ.event && s.global;
+		// Don't fire events if $$.event is undefined in an AMD-usage scenario (#15118)
+		fireGlobals = $$.event && s.global;
 
 		// Watch for a new set of requests
-		if ( fireGlobals && UntiyJQ.active++ === 0 ) {
-			UntiyJQ.event.trigger( "ajaxStart" );
+		if ( fireGlobals && $$.active++ === 0 ) {
+			$$.event.trigger( "ajaxStart" );
 		}
 
 		// Uppercase the type
@@ -9360,11 +9360,11 @@ UntiyJQ.extend( {
 
 		// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
 		if ( s.ifModified ) {
-			if ( UntiyJQ.lastModified[ cacheURL ] ) {
-				jqXHR.setRequestHeader( "If-Modified-Since", UntiyJQ.lastModified[ cacheURL ] );
+			if ( $$.lastModified[ cacheURL ] ) {
+				jqXHR.setRequestHeader( "If-Modified-Since", $$.lastModified[ cacheURL ] );
 			}
-			if ( UntiyJQ.etag[ cacheURL ] ) {
-				jqXHR.setRequestHeader( "If-None-Match", UntiyJQ.etag[ cacheURL ] );
+			if ( $$.etag[ cacheURL ] ) {
+				jqXHR.setRequestHeader( "If-None-Match", $$.etag[ cacheURL ] );
 			}
 		}
 
@@ -9489,11 +9489,11 @@ UntiyJQ.extend( {
 				if ( s.ifModified ) {
 					modified = jqXHR.getResponseHeader( "Last-Modified" );
 					if ( modified ) {
-						UntiyJQ.lastModified[ cacheURL ] = modified;
+						$$.lastModified[ cacheURL ] = modified;
 					}
 					modified = jqXHR.getResponseHeader( "etag" );
 					if ( modified ) {
-						UntiyJQ.etag[ cacheURL ] = modified;
+						$$.etag[ cacheURL ] = modified;
 					}
 				}
 
@@ -9551,8 +9551,8 @@ UntiyJQ.extend( {
 				globalEventContext.trigger( "ajaxComplete", [ jqXHR, s ] );
 
 				// Handle the global AJAX counter
-				if ( !( --UntiyJQ.active ) ) {
-					UntiyJQ.event.trigger( "ajaxStop" );
+				if ( !( --$$.active ) ) {
+					$$.event.trigger( "ajaxStop" );
 				}
 			}
 		}
@@ -9561,16 +9561,16 @@ UntiyJQ.extend( {
 	},
 
 	getJSON: function( url, data, callback ) {
-		return UntiyJQ.get( url, data, callback, "json" );
+		return $$.get( url, data, callback, "json" );
 	},
 
 	getScript: function( url, callback ) {
-		return UntiyJQ.get( url, undefined, callback, "script" );
+		return $$.get( url, undefined, callback, "script" );
 	}
 } );
 
-UntiyJQ.each( [ "get", "post" ], function( i, method ) {
-	UntiyJQ[ method ] = function( url, data, callback, type ) {
+$$.each( [ "get", "post" ], function( i, method ) {
+	$$[ method ] = function( url, data, callback, type ) {
 
 		// Shift arguments if data argument was omitted
 		if ( isFunction( data ) ) {
@@ -9580,19 +9580,19 @@ UntiyJQ.each( [ "get", "post" ], function( i, method ) {
 		}
 
 		// The url can be an options object (which then must have .url)
-		return UntiyJQ.ajax( UntiyJQ.extend( {
+		return $$.ajax( $$.extend( {
 			url: url,
 			type: method,
 			dataType: type,
 			data: data,
 			success: callback
-		}, UntiyJQ.isPlainObject( url ) && url ) );
+		}, $$.isPlainObject( url ) && url ) );
 	};
 } );
 
 
-UntiyJQ._evalUrl = function( url, options ) {
-	return UntiyJQ.ajax( {
+$$._evalUrl = function( url, options ) {
+	return $$.ajax( {
 		url: url,
 
 		// Make this explicit, since user can override this through ajaxSetup (#11264)
@@ -9609,13 +9609,13 @@ UntiyJQ._evalUrl = function( url, options ) {
 			"text script": function() {}
 		},
 		dataFilter: function( response ) {
-			UntiyJQ.globalEval( response, options );
+			$$.globalEval( response, options );
 		}
 	} );
 };
 
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	wrapAll: function( html ) {
 		var wrap;
 
@@ -9625,7 +9625,7 @@ UntiyJQ.fn.extend( {
 			}
 
 			// The elements to wrap the target around
-			wrap = UntiyJQ( html, this[ 0 ].ownerDocument ).eq( 0 ).clone( true );
+			wrap = $$( html, this[ 0 ].ownerDocument ).eq( 0 ).clone( true );
 
 			if ( this[ 0 ].parentNode ) {
 				wrap.insertBefore( this[ 0 ] );
@@ -9648,12 +9648,12 @@ UntiyJQ.fn.extend( {
 	wrapInner: function( html ) {
 		if ( isFunction( html ) ) {
 			return this.each( function( i ) {
-				UntiyJQ( this ).wrapInner( html.call( this, i ) );
+				$$( this ).wrapInner( html.call( this, i ) );
 			} );
 		}
 
 		return this.each( function() {
-			var self = UntiyJQ( this ),
+			var self = $$( this ),
 				contents = self.contents();
 
 			if ( contents.length ) {
@@ -9669,30 +9669,30 @@ UntiyJQ.fn.extend( {
 		var htmlIsFunction = isFunction( html );
 
 		return this.each( function( i ) {
-			UntiyJQ( this ).wrapAll( htmlIsFunction ? html.call( this, i ) : html );
+			$$( this ).wrapAll( htmlIsFunction ? html.call( this, i ) : html );
 		} );
 	},
 
 	unwrap: function( selector ) {
 		this.parent( selector ).not( "body" ).each( function() {
-			UntiyJQ( this ).replaceWith( this.childNodes );
+			$$( this ).replaceWith( this.childNodes );
 		} );
 		return this;
 	}
 } );
 
 
-UntiyJQ.expr.pseudos.hidden = function( elem ) {
-	return !UntiyJQ.expr.pseudos.visible( elem );
+$$.expr.pseudos.hidden = function( elem ) {
+	return !$$.expr.pseudos.visible( elem );
 };
-UntiyJQ.expr.pseudos.visible = function( elem ) {
+$$.expr.pseudos.visible = function( elem ) {
 	return !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length );
 };
 
 
 
 
-UntiyJQ.ajaxSettings.xhr = function() {
+$$.ajaxSettings.xhr = function() {
 	try {
 		return new window.XMLHttpRequest();
 	} catch ( e ) {}
@@ -9707,12 +9707,12 @@ var xhrSuccessStatus = {
 		// #1450: sometimes IE returns 1223 when it should be 204
 		1223: 204
 	},
-	xhrSupported = UntiyJQ.ajaxSettings.xhr();
+	xhrSupported = $$.ajaxSettings.xhr();
 
 support.cors = !!xhrSupported && ( "withCredentials" in xhrSupported );
 support.ajax = xhrSupported = !!xhrSupported;
 
-UntiyJQ.ajaxTransport( function( options ) {
+$$.ajaxTransport( function( options ) {
 	var callback, errorCallback;
 
 	// Cross domain only allowed if supported through XMLHttpRequest
@@ -9857,14 +9857,14 @@ UntiyJQ.ajaxTransport( function( options ) {
 
 
 // Prevent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
-UntiyJQ.ajaxPrefilter( function( s ) {
+$$.ajaxPrefilter( function( s ) {
 	if ( s.crossDomain ) {
 		s.contents.script = false;
 	}
 } );
 
 // Install script dataType
-UntiyJQ.ajaxSetup( {
+$$.ajaxSetup( {
 	accepts: {
 		script: "text/javascript, application/javascript, " +
 			"application/ecmascript, application/x-ecmascript"
@@ -9874,14 +9874,14 @@ UntiyJQ.ajaxSetup( {
 	},
 	converters: {
 		"text script": function( text ) {
-			UntiyJQ.globalEval( text );
+			$$.globalEval( text );
 			return text;
 		}
 	}
 } );
 
 // Handle cache's special case and crossDomain
-UntiyJQ.ajaxPrefilter( "script", function( s ) {
+$$.ajaxPrefilter( "script", function( s ) {
 	if ( s.cache === undefined ) {
 		s.cache = false;
 	}
@@ -9891,14 +9891,14 @@ UntiyJQ.ajaxPrefilter( "script", function( s ) {
 } );
 
 // Bind script tag hack transport
-UntiyJQ.ajaxTransport( "script", function( s ) {
+$$.ajaxTransport( "script", function( s ) {
 
 	// This transport only deals with cross domain or forced-by-attrs requests
 	if ( s.crossDomain || s.scriptAttrs ) {
 		var script, callback;
 		return {
 			send: function( _, complete ) {
-				script = UntiyJQ( "<script>" )
+				script = $$( "<script>" )
 					.attr( s.scriptAttrs || {} )
 					.prop( { charset: s.scriptCharset, src: s.url } )
 					.on( "load error", callback = function( evt ) {
@@ -9928,17 +9928,17 @@ var oldCallbacks = [],
 	rjsonp = /(=)\?(?=&|$)|\?\?/;
 
 // Default jsonp settings
-UntiyJQ.ajaxSetup( {
+$$.ajaxSetup( {
 	jsonp: "callback",
 	jsonpCallback: function() {
-		var callback = oldCallbacks.pop() || ( UntiyJQ.expando + "_" + ( nonce++ ) );
+		var callback = oldCallbacks.pop() || ( $$.expando + "_" + ( nonce++ ) );
 		this[ callback ] = true;
 		return callback;
 	}
 } );
 
 // Detect, normalize options and install callbacks for jsonp requests
-UntiyJQ.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
+$$.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
 	var callbackName, overwritten, responseContainer,
 		jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
@@ -9967,7 +9967,7 @@ UntiyJQ.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 		// Use data converter to retrieve json after script execution
 		s.converters[ "script json" ] = function() {
 			if ( !responseContainer ) {
-				UntiyJQ.error( callbackName + " was not called" );
+				$$.error( callbackName + " was not called" );
 			}
 			return responseContainer[ 0 ];
 		};
@@ -9986,7 +9986,7 @@ UntiyJQ.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
 			// If previous value didn't exist - remove it
 			if ( overwritten === undefined ) {
-				UntiyJQ( window ).removeProp( callbackName );
+				$$( window ).removeProp( callbackName );
 
 			// Otherwise restore preexisting value
 			} else {
@@ -10035,7 +10035,7 @@ support.createHTMLDocument = ( function() {
 // context (optional): If specified, the fragment will be created in this context,
 // defaults to document
 // keepScripts (optional): If true, will include scripts passed in the html string
-UntiyJQ.parseHTML = function( data, context, keepScripts ) {
+$$.parseHTML = function( data, context, keepScripts ) {
 	if ( typeof data !== "string" ) {
 		return [];
 	}
@@ -10075,17 +10075,17 @@ UntiyJQ.parseHTML = function( data, context, keepScripts ) {
 	parsed = buildFragment( [ data ], context, scripts );
 
 	if ( scripts && scripts.length ) {
-		UntiyJQ( scripts ).remove();
+		$$( scripts ).remove();
 	}
 
-	return UntiyJQ.merge( [], parsed.childNodes );
+	return $$.merge( [], parsed.childNodes );
 };
 
 
 /**
  * Load a url into a page
  */
-UntiyJQ.fn.load = function( url, params, callback ) {
+$$.fn.load = function( url, params, callback ) {
 	var selector, type, response,
 		self = this,
 		off = url.indexOf( " " );
@@ -10109,7 +10109,7 @@ UntiyJQ.fn.load = function( url, params, callback ) {
 
 	// If we have elements to modify, make the request
 	if ( self.length > 0 ) {
-		UntiyJQ.ajax( {
+		$$.ajax( {
 			url: url,
 
 			// If "type" variable is undefined, then "GET" method will be used.
@@ -10127,7 +10127,7 @@ UntiyJQ.fn.load = function( url, params, callback ) {
 
 				// If a selector was specified, locate the right elements in a dummy div
 				// Exclude scripts to avoid IE 'Permission Denied' errors
-				UntiyJQ( "<div>" ).append( UntiyJQ.parseHTML( responseText ) ).find( selector ) :
+				$$( "<div>" ).append( $$.parseHTML( responseText ) ).find( selector ) :
 
 				// Otherwise use the full result
 				responseText );
@@ -10149,7 +10149,7 @@ UntiyJQ.fn.load = function( url, params, callback ) {
 
 
 // Attach a bunch of functions for handling common AJAX events
-UntiyJQ.each( [
+$$.each( [
 	"ajaxStart",
 	"ajaxStop",
 	"ajaxComplete",
@@ -10157,7 +10157,7 @@ UntiyJQ.each( [
 	"ajaxSuccess",
 	"ajaxSend"
 ], function( i, type ) {
-	UntiyJQ.fn[ type ] = function( fn ) {
+	$$.fn[ type ] = function( fn ) {
 		return this.on( type, fn );
 	};
 } );
@@ -10165,8 +10165,8 @@ UntiyJQ.each( [
 
 
 
-UntiyJQ.expr.pseudos.animated = function( elem ) {
-	return UntiyJQ.grep( UntiyJQ.timers, function( fn ) {
+$$.expr.pseudos.animated = function( elem ) {
+	return $$.grep( $$.timers, function( fn ) {
 		return elem === fn.elem;
 	} ).length;
 };
@@ -10174,11 +10174,11 @@ UntiyJQ.expr.pseudos.animated = function( elem ) {
 
 
 
-UntiyJQ.offset = {
+$$.offset = {
 	setOffset: function( elem, options, i ) {
 		var curPosition, curLeft, curCSSTop, curTop, curOffset, curCSSLeft, calculatePosition,
-			position = UntiyJQ.css( elem, "position" ),
-			curElem = UntiyJQ( elem ),
+			position = $$.css( elem, "position" ),
+			curElem = $$( elem ),
 			props = {};
 
 		// Set position first, in-case top/left are set even on static elem
@@ -10187,8 +10187,8 @@ UntiyJQ.offset = {
 		}
 
 		curOffset = curElem.offset();
-		curCSSTop = UntiyJQ.css( elem, "top" );
-		curCSSLeft = UntiyJQ.css( elem, "left" );
+		curCSSTop = $$.css( elem, "top" );
+		curCSSLeft = $$.css( elem, "left" );
 		calculatePosition = ( position === "absolute" || position === "fixed" ) &&
 			( curCSSTop + curCSSLeft ).indexOf( "auto" ) > -1;
 
@@ -10206,8 +10206,8 @@ UntiyJQ.offset = {
 
 		if ( isFunction( options ) ) {
 
-			// Use UntiyJQ.extend here to allow modification of coordinates argument (gh-1848)
-			options = options.call( elem, i, UntiyJQ.extend( {}, curOffset ) );
+			// Use $$.extend here to allow modification of coordinates argument (gh-1848)
+			options = options.call( elem, i, $$.extend( {}, curOffset ) );
 		}
 
 		if ( options.top != null ) {
@@ -10226,7 +10226,7 @@ UntiyJQ.offset = {
 	}
 };
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 
 	// offset() relates an element's border box to the document origin
 	offset: function( options ) {
@@ -10236,7 +10236,7 @@ UntiyJQ.fn.extend( {
 			return options === undefined ?
 				this :
 				this.each( function( i ) {
-					UntiyJQ.offset.setOffset( this, options, i );
+					$$.offset.setOffset( this, options, i );
 				} );
 		}
 
@@ -10276,7 +10276,7 @@ UntiyJQ.fn.extend( {
 			parentOffset = { top: 0, left: 0 };
 
 		// position:fixed elements are offset from the viewport, which itself always has zero offset
-		if ( UntiyJQ.css( elem, "position" ) === "fixed" ) {
+		if ( $$.css( elem, "position" ) === "fixed" ) {
 
 			// Assume position:fixed implies availability of getBoundingClientRect
 			offset = elem.getBoundingClientRect();
@@ -10290,23 +10290,23 @@ UntiyJQ.fn.extend( {
 			offsetParent = elem.offsetParent || doc.documentElement;
 			while ( offsetParent &&
 				( offsetParent === doc.body || offsetParent === doc.documentElement ) &&
-				UntiyJQ.css( offsetParent, "position" ) === "static" ) {
+				$$.css( offsetParent, "position" ) === "static" ) {
 
 				offsetParent = offsetParent.parentNode;
 			}
 			if ( offsetParent && offsetParent !== elem && offsetParent.nodeType === 1 ) {
 
 				// Incorporate borders into its offset, since they are outside its content origin
-				parentOffset = UntiyJQ( offsetParent ).offset();
-				parentOffset.top += UntiyJQ.css( offsetParent, "borderTopWidth", true );
-				parentOffset.left += UntiyJQ.css( offsetParent, "borderLeftWidth", true );
+				parentOffset = $$( offsetParent ).offset();
+				parentOffset.top += $$.css( offsetParent, "borderTopWidth", true );
+				parentOffset.left += $$.css( offsetParent, "borderLeftWidth", true );
 			}
 		}
 
 		// Subtract parent offsets and element margins
 		return {
-			top: offset.top - parentOffset.top - UntiyJQ.css( elem, "marginTop", true ),
-			left: offset.left - parentOffset.left - UntiyJQ.css( elem, "marginLeft", true )
+			top: offset.top - parentOffset.top - $$.css( elem, "marginTop", true ),
+			left: offset.left - parentOffset.left - $$.css( elem, "marginLeft", true )
 		};
 	},
 
@@ -10324,7 +10324,7 @@ UntiyJQ.fn.extend( {
 		return this.map( function() {
 			var offsetParent = this.offsetParent;
 
-			while ( offsetParent && UntiyJQ.css( offsetParent, "position" ) === "static" ) {
+			while ( offsetParent && $$.css( offsetParent, "position" ) === "static" ) {
 				offsetParent = offsetParent.offsetParent;
 			}
 
@@ -10334,10 +10334,10 @@ UntiyJQ.fn.extend( {
 } );
 
 // Create scrollLeft and scrollTop methods
-UntiyJQ.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( method, prop ) {
+$$.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( method, prop ) {
 	var top = "pageYOffset" === prop;
 
-	UntiyJQ.fn[ method ] = function( val ) {
+	$$.fn[ method ] = function( val ) {
 		return access( this, function( elem, method, val ) {
 
 			// Coalesce documents and windows
@@ -10366,20 +10366,20 @@ UntiyJQ.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function(
 } );
 
 // Support: Safari <=7 - 9.1, Chrome <=37 - 49
-// Add the top/left cssHooks using UntiyJQ.fn.position
+// Add the top/left cssHooks using $$.fn.position
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
 // Blink bug: https://bugs.chromium.org/p/chromium/issues/detail?id=589347
 // getComputedStyle returns percent when specified for top/left/bottom/right;
 // rather than make the css module depend on the offset module, just check for it here
-UntiyJQ.each( [ "top", "left" ], function( i, prop ) {
-	UntiyJQ.cssHooks[ prop ] = addGetHookIf( support.pixelPosition,
+$$.each( [ "top", "left" ], function( i, prop ) {
+	$$.cssHooks[ prop ] = addGetHookIf( support.pixelPosition,
 		function( elem, computed ) {
 			if ( computed ) {
 				computed = curCSS( elem, prop );
 
 				// If curCSS returns percentage, fallback to offset
 				return rnumnonpx.test( computed ) ?
-					UntiyJQ( elem ).position()[ prop ] + "px" :
+					$$( elem ).position()[ prop ] + "px" :
 					computed;
 			}
 		}
@@ -10388,12 +10388,12 @@ UntiyJQ.each( [ "top", "left" ], function( i, prop ) {
 
 
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
-UntiyJQ.each( { Height: "height", Width: "width" }, function( name, type ) {
-	UntiyJQ.each( { padding: "inner" + name, content: type, "": "outer" + name },
+$$.each( { Height: "height", Width: "width" }, function( name, type ) {
+	$$.each( { padding: "inner" + name, content: type, "": "outer" + name },
 		function( defaultExtra, funcName ) {
 
 		// Margin is only for outerHeight, outerWidth
-		UntiyJQ.fn[ funcName ] = function( margin, value ) {
+		$$.fn[ funcName ] = function( margin, value ) {
 			var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" ),
 				extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
 
@@ -10424,30 +10424,30 @@ UntiyJQ.each( { Height: "height", Width: "width" }, function( name, type ) {
 				return value === undefined ?
 
 					// Get width or height on the element, requesting but not forcing parseFloat
-					UntiyJQ.css( elem, type, extra ) :
+					$$.css( elem, type, extra ) :
 
 					// Set width or height on the element
-					UntiyJQ.style( elem, type, value, extra );
+					$$.style( elem, type, value, extra );
 			}, type, chainable ? margin : undefined, chainable );
 		};
 	} );
 } );
 
 
-UntiyJQ.each( ( "blur focus focusin focusout resize scroll click dblclick " +
+$$.each( ( "blur focus focusin focusout resize scroll click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
 	function( i, name ) {
 
 	// Handle event binding
-	UntiyJQ.fn[ name ] = function( data, fn ) {
+	$$.fn[ name ] = function( data, fn ) {
 		return arguments.length > 0 ?
 			this.on( name, null, data, fn ) :
 			this.trigger( name );
 	};
 } );
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 	hover: function( fnOver, fnOut ) {
 		return this.mouseenter( fnOver ).mouseleave( fnOut || fnOver );
 	}
@@ -10456,7 +10456,7 @@ UntiyJQ.fn.extend( {
 
 
 
-UntiyJQ.fn.extend( {
+$$.fn.extend( {
 
 	bind: function( types, data, fn ) {
 		return this.on( types, null, data, fn );
@@ -10479,9 +10479,9 @@ UntiyJQ.fn.extend( {
 
 // Bind a function to a context, optionally partially applying any
 // arguments.
-// UntiyJQ.proxy is deprecated to promote standards (specifically Function#bind)
+// $$.proxy is deprecated to promote standards (specifically Function#bind)
 // However, it is not slated for removal any time soon
-UntiyJQ.proxy = function( fn, context ) {
+$$.proxy = function( fn, context ) {
 	var tmp, args, proxy;
 
 	if ( typeof context === "string" ) {
@@ -10503,34 +10503,34 @@ UntiyJQ.proxy = function( fn, context ) {
 	};
 
 	// Set the guid of unique handler to the same of original handler, so it can be removed
-	proxy.guid = fn.guid = fn.guid || UntiyJQ.guid++;
+	proxy.guid = fn.guid = fn.guid || $$.guid++;
 
 	return proxy;
 };
 
-UntiyJQ.holdReady = function( hold ) {
+$$.holdReady = function( hold ) {
 	if ( hold ) {
-		UntiyJQ.readyWait++;
+		$$.readyWait++;
 	} else {
-		UntiyJQ.ready( true );
+		$$.ready( true );
 	}
 };
-UntiyJQ.isArray = Array.isArray;
-UntiyJQ.parseJSON = JSON.parse;
-UntiyJQ.nodeName = nodeName;
-UntiyJQ.isFunction = isFunction;
-UntiyJQ.isWindow = isWindow;
-UntiyJQ.camelCase = camelCase;
-UntiyJQ.type = toType;
+$$.isArray = Array.isArray;
+$$.parseJSON = JSON.parse;
+$$.nodeName = nodeName;
+$$.isFunction = isFunction;
+$$.isWindow = isWindow;
+$$.camelCase = camelCase;
+$$.type = toType;
 
-UntiyJQ.now = Date.now;
+$$.now = Date.now;
 
-UntiyJQ.isNumeric = function( obj ) {
+$$.isNumeric = function( obj ) {
 
-	// As of UntiyJQ 3.0, isNumeric is limited to
+	// As of $$ 3.0, isNumeric is limited to
 	// strings and numbers (primitives or objects)
 	// that can be coerced to finite numbers (gh-2662)
-	var type = UntiyJQ.type( obj );
+	var type = $$.type( obj );
 	return ( type === "number" || type === "string" ) &&
 
 		// parseFloat NaNs numeric-cast false positives ("")
@@ -10542,22 +10542,22 @@ UntiyJQ.isNumeric = function( obj ) {
 
 
 
-// Register as a named AMD module, since UntiyJQ can be concatenated with other
+// Register as a named AMD module, since $$ can be concatenated with other
 // files that may use define, but not via a proper concatenation script that
 // understands anonymous AMD modules. A named AMD is safest and most robust
-// way to register. Lowercase UntiyJQ is used because AMD module names are
-// derived from file names, and UntiyJQ is normally delivered in a lowercase
+// way to register. Lowercase $$ is used because AMD module names are
+// derived from file names, and $$ is normally delivered in a lowercase
 // file name. Do this after creating the global so that if an AMD module wants
-// to call noConflict to hide this version of UntiyJQ, it will work.
+// to call noConflict to hide this version of $$, it will work.
 
-// Note that for maximum portability, libraries that are not UntiyJQ should
+// Note that for maximum portability, libraries that are not $$ should
 // declare themselves as anonymous modules, and avoid setting a global if an
-// AMD loader is present. UntiyJQ is a special case. For more information, see
+// AMD loader is present. $$ is a special case. For more information, see
 // https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
 
 if ( typeof define === "function" && define.amd ) {
-	define( "UntiyJQ", [], function() {
-		return UntiyJQ;
+	define( "$$", [], function() {
+		return $$;
 	} );
 }
 
@@ -10566,33 +10566,33 @@ if ( typeof define === "function" && define.amd ) {
 
 var
 
-	// Map over UntiyJQ in case of overwrite
-	_UntiyJQ = window.UntiyJQ,
+	// Map over $$ in case of overwrite
+	_$$ = window.$$,
 
 	// Map over the $ in case of overwrite
 	_$ = window.$;
 
-UntiyJQ.noConflict = function( deep ) {
-	if ( window.$ === UntiyJQ ) {
+$$.noConflict = function( deep ) {
+	if ( window.$ === $$ ) {
 		window.$ = _$;
 	}
 
-	if ( deep && window.UntiyJQ === UntiyJQ ) {
-		window.UntiyJQ = _UntiyJQ;
+	if ( deep && window.$$ === $$ ) {
+		window.$$ = _$$;
 	}
 
-	return UntiyJQ;
+	return $$;
 };
 
-// Expose UntiyJQ and $ identifiers, even in AMD
-// (#7102#comment:10, https://github.com/UntiyJQ/UntiyJQ/pull/557)
+// Expose $$ and $ identifiers, even in AMD
+// (#7102#comment:10, https://github.com/$$/$$/pull/557)
 // and CommonJS for browser emulators (#13566)
 if ( !noGlobal ) {
-	window.UntiyJQ = window.$ = UntiyJQ;
+	window.$$ = window.$ = $$;
 }
 
 
-UntiyJQ.noConflict();
+$$.noConflict();
 
-return UntiyJQ;
+return $$;
 } );
