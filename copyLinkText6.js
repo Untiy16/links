@@ -1,4 +1,4 @@
-console.log('copyLinkText6.js')
+console.log('copyLinkText6.js loaded')
 void function $getLines($){    
     function countLines($element){
         var lines          = 0;
@@ -190,6 +190,7 @@ function createSelectionFromPoint(anchorX, anchorY, focusX, focusY) {
 
 // var this = document.getElementById("ex2");
 var mouseMoved = false;
+var preventClick = false;
 var start_coods = {};
     start_coods.x = 0;
     start_coods.y = 0;
@@ -243,14 +244,14 @@ jQueryMod('a').on('mousedown.linkselection', function (downEvent) {
     // console.log( start_coods.y)
 
 
-    if (this.attributes.href) {
-        $this.on('click', function(clickEvent) {
-            if (mouseMoved) {
-                clickEvent.preventDefault();
-            }
-            resetEvents($this);
-        });
-    }
+    // if (this.attributes.href) {
+    //     $this.on('click', function(clickEvent) {
+    //         if (mouseMoved) {
+    //             clickEvent.preventDefault();
+    //         }
+    //         resetEvents($this);
+    //     });
+    // }
     
     jQueryMod(document).one('mouseup', function () {
         resetEvents($this);
@@ -290,6 +291,14 @@ jQueryMod('a').on('mousedown.linkselection', function (downEvent) {
                 $this.on('dragstart.linkselection', function (dragEvent) {
                     dragEvent.preventDefault();
                 });
+
+                if(!preventClick){
+                    $this.one('click', function (clickEvent) {
+                        clickEvent.preventDefault();
+                        preventClick = false;
+                    });
+                    preventClick = true;
+                }
 
                 mouseMoved = true;
             }
