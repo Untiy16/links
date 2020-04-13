@@ -1,3 +1,4 @@
+console.log('copyLinkText6.js')
 void function $getLines($){    
     function countLines($element){
         var lines          = 0;
