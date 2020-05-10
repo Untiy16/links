@@ -208,7 +208,7 @@ function resetEvents($el) {
 }
 
 
-jQueryMod('a').on('mousedown.linkselection', function (downEvent) {
+jQueryMod('a:not(.rate-episode)').on('mousedown.linkselection', function (downEvent) {
 
     let $this = jQueryMod(this);
     let this_a = this;
