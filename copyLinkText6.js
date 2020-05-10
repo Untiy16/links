@@ -1,4 +1,4 @@
-console.log('copyLinkText6.js loaded')
+console.log('copyLinkText6.js loaded!')
 void function $getLines($){    
     function countLines($element){
         var lines          = 0;
