@@ -1,5 +1,5 @@
 /*!
- * jQueryMod JavaScript Library v3.4.1
+ * jQueryMod JavaScript Library v3.4.1 test
  * https://jquery.com/
  *
  * Includes Sizzle.js
